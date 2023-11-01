@@ -1,0 +1,49 @@
+/* navbar.css */
+.navbar {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .nav-right {
+    display: flex; /* Add this line to make the links display horizontally */
+    align-items: center;
+  }
+  
+  .nav-right a {
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+  }
+  
+  .lost-and-found {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+  }
+  
+  .search-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+  
+  @media screen {
+    
+  }

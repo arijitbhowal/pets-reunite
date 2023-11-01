@@ -3,12 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-three/drei": "^9.88.10",
+    "@splinetool/runtime": "^0.9.490",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "lamina": "^1.1.23",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "react-three-fiber": "^6.0.13",
+    "styled-components": "^6.1.0",
+    "three": "^0.158.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

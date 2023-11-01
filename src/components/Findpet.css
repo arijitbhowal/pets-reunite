@@ -1,0 +1,28 @@
+/* Findpet.css */
+.findpet {
+  width: 50%;
+  height: auto;
+  display: inline;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  font-size: 32px;
+  font-weight: medium;
+}
+.find-buttons {
+  display: flex;
+  gap: 10px; /* Add the desired space between the buttons */
+}
+.find-button {
+  border-radius: 5px;
+  background-color: #073b4c;
+  color: white;
+  width: 176px;
+  height: 31px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
+}
