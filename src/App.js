@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
-import Navbar from "./components/Navbar";
-import Findpet from "./components/Findpet";
-import OurModel from "./components/OurModel";
+import React from "react";
+import { Routes, Route } from "react-router-dom"
+import Home from "./components/Home";
+import Login from "./components/Login";
+import Form from "./components/Form";
 
 function App() {
   return (
-    <div className="nav">
-      <Navbar />
-      <div className="main-content">
-        <Findpet />
-        <OurModel />
-      </div>
-    </div>
+    <Routes>
+      <Route path='/' element={<Home/>}  /> 
+      <Route path='/login' element={<Login/>}/>
+      <Route path='/form' element={<Form/>} />
+    </Routes>
   );
 }
 

@@ -1,22 +1,30 @@
-import React from 'react';
-import './Navbar.css'; // Import the CSS file
+import React, { useState } from 'react';
+import './Navbar.css';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+
   return (
     <div className='navbar'>
       <div className='logo'>
         <img src='/logo.svg' alt='logo' />
         <p>Pets Reunite</p>
       </div>
-      <div className='nav-right'>
-        <a id='home'href='#'>HOME</a>
-        <a href='#' className="lost-and-found">
-          <img src='/search-icon.svg' alt="Search" className="search-icon" />
-          LOST AND FOUND
-        </a>
-        <a href='#'>LOGIN/REGISTER</a>
+        <ul className="nav-links">
+          <li>
+            <Link to='/'>HOME</Link>
+          </li>
+          <li>
+            <Link to='/form'>
+              <img src='/search-icon.svg' alt='Search' className='search-icon' />
+              LOST AND FOUND
+            </Link>
+          </li>
+          <li>
+            <Link to='/login'>LOGIN/REGISTER</Link>
+          </li>
+        </ul>
       </div>
-    </div>
   );
 }
 

@@ -26,3 +26,26 @@
   line-height: 24px;
   cursor: pointer;
 }
+@media (max-width: 768px) {
+  .findpet {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    font-size: 32px;
+    font-weight: medium;
+  }
+  
+  .find-pet {
+    flex-direction: column;
+    justify-content: center; /* Center buttons vertically */
+  }
+
+  .find-button {
+    width: 40vw; /* Take up full width on mobile */
+    text-align: center; /* Center text horizontally */
+  }
+}

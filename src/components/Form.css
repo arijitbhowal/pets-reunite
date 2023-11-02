@@ -1,0 +1,71 @@
+/* Form.css */
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.lost-pet-form-container {
+  background-color: #eed9d1;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 70vw;
+  margin: 0 auto;
+}
+
+.lost-pet-form-title {
+  text-align: center;
+}
+
+.form-group {
+  margin-top: 10px;
+}
+
+.form-group-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.submit-button {
+  background-color: #073b4c;
+  width: 100%;
+  color: white;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.left,
+.right {
+  /* Add any styling for the left and right divs here */
+}
+
+/* Media query for responsiveness (adjust as needed) */
+@media (max-width: 768px) {
+  .lost-pet-form-container {
+    width: 100%;
+  }
+}
