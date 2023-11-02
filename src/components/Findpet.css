@@ -5,7 +5,7 @@
   display: inline;
   justify-content: center;
   align-items: center;
-  padding-top: 50px;
+  padding-top: 150px;
   font-size: 32px;
   font-weight: medium;
 }
@@ -34,11 +34,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 50px;
+    padding-top: 150px;
     font-size: 32px;
     font-weight: medium;
   }
-  
+
   .find-pet {
     flex-direction: column;
     justify-content: center; /* Center buttons vertically */
