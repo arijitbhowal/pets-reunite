@@ -10,14 +10,14 @@ body {
   display: flex;
   padding: 10px;
 }
-@media screen and (min-width: 1814px) {
+@media screen and (min-width: 1440px) {
   .main-content {
     flex-direction: row;
     height: 100vh;
     width: 100vw;
   }
 }
-@media screen and (max-width: 1813px) {
+@media screen and (max-width: 1439px) {
   .main-content {
     flex-direction: column;
     width: 100vw;
