@@ -1,0 +1,51 @@
+body{
+  margin: 0px;
+  padding: 0px;
+}
+.intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .findpet {
+    text-align: center;
+  }
+  
+  .text {
+    font-size: 24px;
+  }
+  
+  .find-buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: column; /* Change flex-direction to column */
+    align-items: center; /* Center the buttons vertically */
+    margin-top: 20px;
+  }
+  
+  .find-button {
+    margin: 10px 0; /* Add margin to separate buttons vertically */
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #073b4c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  
+  .find-button:hover {
+    background-color: #004e64;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }

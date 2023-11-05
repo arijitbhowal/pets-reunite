@@ -1,31 +1,56 @@
+import { signOut } from 'firebase/auth';
+import { auth } from '../FirebaseConfig';
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import Hamburger from './Hamburger';
 import './Navbar.css';
-import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+  const history = useNavigate();
+  const [showNavbar, setShowNavbar] = useState(false);
+
+  const handleShowNavbar = () => {
+    setShowNavbar(!showNavbar);
+  };
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        history('/');
+      });
+  };
 
   return (
-    <div className='navbar'>
-      <div className='logo'>
-        <img src='/logo.svg' alt='logo' />
-        <p>Pets Reunite</p>
+    <nav className="navbar">
+      <div className="nav-container">
+        <div className="logo">
+          <img src="/logo.svg" alt="Logo" />
+          Pets Reunite
+        </div>
+        <div className="menu-icon" onClick={handleShowNavbar}>
+          <Hamburger />
+        </div>
+        <div className={`nav-elements  ${showNavbar && 'active'}`}>
+          <ul>
+            <li>
+              <NavLink to='/home'>HOME</NavLink>
+            </li>
+            <li>
+              <NavLink to='/form'>
+                <img src='/search-icon.svg' alt='Search' className='search-icon' />
+                LOST AND FOUND
+              </NavLink>
+            </li>
+            <li>
+              {/* Display "Logout" button */}
+              <button onClick={handleLogout}>Logout</button>
+            </li>
+          </ul>
+        </div>
       </div>
-        <ul className="nav-links">
-          <li>
-            <Link to='/'>HOME</Link>
-          </li>
-          <li>
-            <Link to='/form'>
-              <img src='/search-icon.svg' alt='Search' className='search-icon' />
-              LOST AND FOUND
-            </Link>
-          </li>
-          <li>
-            <Link to='/login'>LOGIN/REGISTER</Link>
-          </li>
-        </ul>
-      </div>
+    </nav>
   );
-}
+};
 
 export default Navbar;

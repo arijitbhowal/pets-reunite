@@ -12,7 +12,7 @@ const OurModel = () => {
   return (
     <div className='canvas'>
       <Canvas dpr={[1,1]} shadows camera={{fov: 45}} style={{position:"relative"}}>
-        <color attach="background" args={['#D7AB9D']} />
+        {/* <color attach="background" args={['#D7AB9D']} /> */}
         <ambientLight intensity={3} />
         <PresentationControls speed={1} global zoom={0.5} polar={[-0.1, Math.PI / 4]}>
           <Stage environment={null}>

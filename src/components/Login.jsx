@@ -1,7 +1,42 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Login.css';
+import { auth } from '../FirebaseConfig';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+function LoginRegister() {
+  const history = useNavigate();
+  const [errorMessage, setErrorMessage] = useState(null); // State variable for error message
+
+  const handleSubmit = (e, type) => {
+    e.preventDefault();
+    const name = e.target['name'].value;
+    const email = e.target['email'].value;
+    const password = e.target['password'].value;
+    
+    if (type === 'SignUp') {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(data => {
+          // console.log(data, "authData");
+          history('/home');
+        })
+        .catch(error => {
+          // Handle the registration error and set the error message
+          setErrorMessage(error.message);
+        });
+    } else if (type === 'Login') {
+      signInWithEmailAndPassword(auth, email, password)
+        .then(data => {
+          // console.log(data, "authData");
+          history('/home');
+        })
+        .catch(error => {
+          // Handle the registration error and set the error message
+          setErrorMessage(error.message);
+        });
+    }
+  };
+
   useEffect(() => {
     // Add the script logic here
     const wrapper = document.querySelector('.wrapper');
@@ -15,60 +50,62 @@ const Login = () => {
     signupHeader.addEventListener('click', () => {
       wrapper.classList.remove('active');
     });
-  }, []); // The empty dependency array ensures that this effect runs once when the component mounts.
+  }, []);
 
   return (
-      <div className="wrapper">
-        <div className="form signup">
-          <header>Signup</header>
-          <form>
-            <input
-              type="text"
-              name="fullName"
-              placeholder="Full name"
-              required
-            />
-            <input
-              type="text"
-              name="email"
-              placeholder="Email address"
-              required
-            />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              required
-            />
-            <div className="checkbox">
-              <input type="checkbox" id="signupCheck" />
-              <label htmlFor="signupCheck">I accept all terms & conditions</label>
-            </div>
-            <input type="submit" value="Signup" />
-          </form>
-        </div>
-  
-        <div className="form login">
-          <header>Login</header>
-          <form>
-            <input
-              type="text"
-              name="email"
-              placeholder="Email address"
-              required
-            />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              required
-            />
-            <a href="#">Forgot password?</a>
-            <input type="submit" value="Login" />
-          </form>
-        </div>
+    <div className="wrapper">
+      <div className="form signup">
+        <header>Signup</header>
+        <form onSubmit={(e) => handleSubmit(e, 'SignUp')}>
+          <input
+            type="text"
+            name="fullName"
+            placeholder="Full name"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email address"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+          <div className="checkbox">
+            <input type="checkbox" id="signupCheck" required />
+            <label htmlFor="signupCheck">I accept all terms & conditions</label>
+          </div>
+          <input type="submit" value="SignUp" />
+          {errorMessage && <div className="error-message">{errorMessage}</div>} {/* Display error message */}
+        </form>
       </div>
-    );
-  };
 
-export default Login;
+      <div className="form login">
+        <header>Login</header>
+        <form onSubmit={(e) => handleSubmit(e, 'Login')}>
+          <input
+            type="text"
+            name="email"
+            placeholder="Email address"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+          />
+          <a href="#">Forgot password?</a>
+          {errorMessage && <div className="error-message">{errorMessage}</div>} {/* Display error message */}
+          <input type="submit" value="Login" />
+        </form>
+      </div>
+    </div>
+  );
+}
+
+export default LoginRegister;

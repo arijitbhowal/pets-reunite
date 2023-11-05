@@ -1,66 +1,139 @@
-/* Navbar.css */
-.navbar {
-  top: 0px;
-  position: fixed;
-  width: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fcfcfc;
+}
+
+.nav-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  background-color: #333;
-  color: white;
-  z-index: 999;
+  height: 100%;
 }
+
+.navbar {
+  top: 0;
+  width: 100%; /* Change from 100vw to 100% */
+  height: 60px;
+  background-color: #000;
+  z-index: 999;
+  position: fixed;
+}
+
 
 .logo {
+}
+
+.menu-icon {
+  display: none;
+}
+
+.nav-elements button {
+  background-color: #004e64; /* Background color for the button */
+  color: #fff; /* Text color for the button */
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Add a hover effect for the Logout button */
+.nav-elements ul li button:hover {
+  background-color: #118ab2; /* Change the background color on hover */
+}
+.nav-elements ul {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+
+  list-style-type: none;
 }
 
-.logo img {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
+.nav-elements ul li:not(:last-child) {
+  margin-right: 60px;
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-.nav-links a{
-  text-decoration: none;
-  color: white;
-}
-
-.nav-links li {
+.nav-elements ul a {
   font-size: 16px;
+  font-weight: 400;
+  color: white;
+  text-decoration: none;
 }
 
-.search-icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 5px;
+.nav-elements ul a.active {
+  color: wheat;
+  font-weight: 500;
+  position: relative;
 }
 
-/* Media Query for smaller screens */
+.nav-elements ul a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #574c4c;
+}
+
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .logo {
-    margin-bottom: 20px;
-  }
-
-  .nav-links {
-    display: flex;
-  }
-
-  .nav-links li {
-    margin-bottom: 10px;
+  .nav-elements ul li:not(:last-child) {
+    margin-right: 30px;
   }
 }
 
-/* You can add more media queries as needed for other screen sizes */
+@media (max-width: 600px) {
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+  }
+
+  .nav-elements {
+    position: fixed; /* Change to position: fixed */
+    top: 60px; /* Adjust the top value accordingly */
+    right: 0;
+    background-color: #000;
+    width: 0;
+    height: calc(100vh - 60px);
+    transition: all 0.3s ease-in;
+    overflow: hidden;
+  }
+  
+
+  .nav-elements.active {
+    width: 270px;
+  }
+
+  .nav-elements ul {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-elements ul li {
+    margin-right: unset;
+    margin-top: 22px;
+  }
+}
+.logo {
+    display: flex;
+    align-items: center;
+    color:white
+  }
+  
+  .logo img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  .search-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+  
