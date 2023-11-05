@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import Form from "./components/Form";
 import Design from "./Design";
 import Loginhome from "./components/Loginhome";
+import './App.css';
 
 function App() {
   return (

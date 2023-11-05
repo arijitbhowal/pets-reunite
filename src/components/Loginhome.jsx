@@ -1,23 +1,22 @@
 import React from 'react';
 import Navbar from './Navbar';
-import './Loginhome.css';
-import { Link } from 'react-router-dom';
-import About from './About';
 import Intro from './Intro';
+import About from './About';
+import PetCards from './PetCards';
 import Footer from './Footer';
-
-const Loginhome = () => {
+import ProgressBar from './ProgressBar';
+import ReportedPets from './ReportedPets';
+function Homepage() {
   return (
-    <div className="container">
-      <div className="nav">
-        <Navbar />
-      </div>
-      <div className="content">
-        <Intro />
-        <About />
-      </div>
-      </div>
+    <div>
+      <Navbar />
+      <Intro />
+      <About />
+      <ProgressBar />
+      <ReportedPets />
+      <Footer />
+    </div>
   );
-};
+}
 
-export default Loginhome;
+export default Homepage;

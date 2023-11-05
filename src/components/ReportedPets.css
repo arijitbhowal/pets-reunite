@@ -1,0 +1,14 @@
+/* ReportedPets.css */
+.reported-pets {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    width: 100vw; /* Adjust the width as needed */
+  }
+  
+  .reported-header {
+    font-size: 24px;
+    margin: 20px 0;
+  }
+  

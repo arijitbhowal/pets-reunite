@@ -25,9 +25,9 @@ const Design = () => {
             loaded={particlesLoaded}
             options={{
                 background: {
-                    color: {
-                        value: "#25a18d",
-                    },
+                    // color: {
+                    //     value: "#25a18d",
+                    // },
                 },
                 fpsLimit: 120,
                 interactivity: {

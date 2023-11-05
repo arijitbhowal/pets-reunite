@@ -11,7 +11,6 @@ const Home = () => {
       <div className="navbar transparent">
         <div className="logo">
         <img src="/logo.svg" alt="Logo" />
-
           <span>Pets Reunite</span>
         </div>
         <div className="signup-signin">
