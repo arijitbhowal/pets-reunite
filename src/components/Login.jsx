@@ -4,6 +4,8 @@ import { auth } from '../FirebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { useFormik } from 'formik';
+
 function LoginRegister() {
   const history = useNavigate();
   const [errorMessage, setErrorMessage] = useState(null); // State variable for error message
@@ -52,13 +54,26 @@ function LoginRegister() {
     });
   }, []);
 
+  useFormik(
+    {
+      initialValues: {
+        fullName: '',
+        email: '',
+        password: '',
+      },
+      onSubmit: values => {
+        console.log(values);
+      },
+    }
+  )
+
   return (
     <div className="wrapper">
       <div className="form signup">
         <header>Signup</header>
         <form onSubmit={(e) => handleSubmit(e, 'SignUp')}>
           <input
-            type="text"
+            type="name"
             name="fullName"
             placeholder="Full name"
             required
@@ -88,7 +103,7 @@ function LoginRegister() {
         <header>Login</header>
         <form onSubmit={(e) => handleSubmit(e, 'Login')}>
           <input
-            type="text"
+            type="email"
             name="email"
             placeholder="Email address"
             required

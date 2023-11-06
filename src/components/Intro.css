@@ -23,13 +23,12 @@ body{
   .find-buttons {
     display: flex;
     justify-content: center;
-    flex-direction: column; /* Change flex-direction to column */
-    align-items: center; /* Center the buttons vertically */
+    align-items: center; /* Center the buttons horizontally and vertically */
     margin-top: 20px;
   }
   
   .find-button {
-    margin: 10px 0; /* Add margin to separate buttons vertically */
+    margin: 10px; /* Add margin to separate buttons horizontally and vertically */
     padding: 10px 20px;
     font-size: 18px;
     background-color: #073b4c;
@@ -40,6 +39,7 @@ body{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    margin-right: 10px; /* Add right margin to separate buttons */
   }
   
   .find-button:hover {

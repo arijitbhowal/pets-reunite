@@ -8,9 +8,11 @@ const Intro = () => {
       <div className='findpet'>
         <p className='text'>We help missing pets reunite with their owners</p>
         <div className='find-buttons'>
-          <Link to="/form">
-            <button className='find-button' style={{ marginRight: '10px' }}>Found a Pet</button>
-            <button className='find-button'>Lost a Pet</button>
+          <Link to="/lost">
+            <button className='find-button' style={{ marginRight: '10px' }}>Lost a Pet</button>
+            </Link>
+            <Link to="/found">
+            <button className='find-button'>Found a Pet</button>
           </Link>
         </div>
       </div>

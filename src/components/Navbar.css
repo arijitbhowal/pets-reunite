@@ -15,6 +15,7 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  width: 100vw;
 }
 
 .navbar {
@@ -78,13 +79,13 @@ body {
   background-color: #574c4c;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .nav-elements ul li:not(:last-child) {
     margin-right: 30px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .menu-icon {
     display: block;
     cursor: pointer;
@@ -128,9 +129,67 @@ body {
     height: 50px;
     margin-right: 10px;
   }
-  .search-icon {
+  .search-icon, .paw-icon {
     width: 20px;
     height: 20px;
     margin-right: 5px;
   }
+
+.dropdown-nav{
+  color: white;
+  cursor: pointer;
+}
+  /* Add styles for the dropdown menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%; /* Position the dropdown below the parent element */
+  left: 0;
+  background-color: #000;
+  min-width: 160px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #fff;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #000;
+}
+
+/* Show the dropdown content when the parent is hovered */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+@media (max-width: 800px) {
+  /* Hide desktop navigation elements */
+
+  .dropdown-nav {
+    display: none;
+  }
+    .nav-elements ul li{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Show mobile buttons */
+
   
+}
+
+@media (min-width: 800px){
+  .mobile-buttons{
+    display: none;
+  }
+}

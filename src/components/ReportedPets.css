@@ -11,4 +11,20 @@
     font-size: 24px;
     margin: 20px 0;
   }
+  .reported-header {
+    font-size: 24px;
+    margin: 20px 0;
+  }
   
+  .view-all-link {
+    font-size: 18px;
+    text-decoration: underline;
+    font-weight: 500;
+    color: #031830; /* Change the color to your preferred link color */
+    margin-top: 10px;
+  }
+  
+  .view-all-link:hover {
+    text-decoration: underline;
+    color: #0056b3; /* Change the color for the hover state */
+  }

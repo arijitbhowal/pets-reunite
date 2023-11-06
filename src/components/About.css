@@ -3,6 +3,7 @@
   width: 100vw;
   height: 700px;
   padding: 0px;
+  overflow: hidden;
 }
 
 .image-container {
@@ -34,12 +35,20 @@
 }
 
 /* Media query for smaller devices */
+@media (max-width: 845px) {
+  .about-text {
+    font-size: 20px; /* Reduce font size for smaller devices */
+    max-height: 700px; /* Adjust the maximum height for smaller screens */
+  }
+  
+}
 @media (max-width: 768px) {
   .about-text {
     font-size: 12px; /* Reduce font size for smaller devices */
     max-height: 700px; /* Adjust the maximum height for smaller screens */
   }
 }
+
 html {
   scroll-behavior: smooth;
 }

@@ -7,6 +7,8 @@ import Design from "./Design";
 import Loginhome from "./components/Loginhome";
 import './App.css';
 import PasswordReset from "./components/PasswordReset";
+import SearchPet from "./components/SearchPet";
+import MapComponent from "./components/MapComponent";
 
 function App() {
   return (
@@ -15,9 +17,12 @@ function App() {
     <Routes>
       <Route path='/' element={<Home/>}  /> 
       <Route path='/login' element={<Login/>}/>
-      <Route path='/form' element={<Form/>} />
       <Route path='/home' element={<Loginhome/>} />
       <Route path='/resetpassword'element={<PasswordReset/>} />
+      <Route path='/lost' element={<Form/>} />
+      <Route path='/found' element={<Form/>} />
+      <Route path='/search' element={<SearchPet/>} />
+      <Route path='/map' element={<MapComponent/>} />
     </Routes>
     </div>
   );
