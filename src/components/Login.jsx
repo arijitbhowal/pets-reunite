@@ -3,7 +3,7 @@ import './Login.css';
 import { auth } from '../FirebaseConfig';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 function LoginRegister() {
   const history = useNavigate();
   const [errorMessage, setErrorMessage] = useState(null); // State variable for error message
@@ -99,7 +99,7 @@ function LoginRegister() {
             placeholder="Password"
             required
           />
-          <a href="#">Forgot password?</a>
+          <Link to="/resetpassword">Forgot password?</Link>
           {errorMessage && <div className="error-message">{errorMessage}</div>} {/* Display error message */}
           <input type="submit" value="Login" />
         </form>

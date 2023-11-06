@@ -9,15 +9,16 @@ function ProgressBar() {
       const stepWidth = (stepIndex * 100) / 4; // Assuming 5 steps (0 to 4)
       $('#line-progress').css('width', stepWidth + '%');
 
-      $('.step').removeClass('active');
-      $('.step:lt(' + stepIndex + ')').addClass('active');
+      // Add or remove the active class from the clicked step
+      $('#progress-bar-container li').removeClass('active');
+      $('#progress-bar-container li:lt(' + (stepIndex + 1) + ')').addClass('active');
 
       const sectionClass = '.section-content';
       $(sectionClass).removeClass('active');
       $(sectionClass).eq(stepIndex).addClass('active');
     }
 
-    $('.step').click(function () {
+    $('#progress-bar-container li').click(function () {
       const stepIndex = $(this).index();
       handleStepClick(stepIndex);
     });
@@ -28,8 +29,8 @@ function ProgressBar() {
 
   return (
     <div className='progress'>
-        <div className='progress-header'>
-      <h1>Our Process</h1>
+      <div className='progress-header'>
+        <h1>Our Process</h1>
       </div>
       <div className="process-wrapper">
         <div id="progress-bar-container">
@@ -69,7 +70,7 @@ function ProgressBar() {
         <div id="progress-content-section">
           <div className="section-content discovery active">
             <h2>Login</h2>
-            <p className="progress-details"> {/* Add the class "progress-details" */}
+            <p className="progress-details">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
               neque justo, consequat non fermentum ac, tempor eu turpis.
               Proin nulla eros, placerat non ipsum ut, dapibus ullamcorper ex.
@@ -84,7 +85,7 @@ function ProgressBar() {
 
           <div className="section-content strategy">
             <h2>Report Pet</h2>
-            <p className="progress-details"> {/* Add the class "progress-details" */}
+            <p className="progress-details">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
               neque justo, consequat non fermentum ac, tempor eu turpis.
               Proin nulla eros, placerat non ipsum ut, dapibus ullamcorper ex.
@@ -99,7 +100,7 @@ function ProgressBar() {
 
           <div className="section-content creative">
             <h2>Contact Owner</h2>
-            <p className="progress-details"> {/* Add the class "progress-details" */}
+            <p className="progress-details">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
               neque justo, consequat non fermentum ac, tempor eu turpis.
               Proin nulla eros, placerat non ipsum ut, dapibus ullamcorper ex.
@@ -114,7 +115,7 @@ function ProgressBar() {
 
           <div className="section-content production">
             <h2>Reunion</h2>
-            <p className="progress-details"> {/* Add the class "progress-details" */}
+            <p className="progress-details">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
               neque justo, consequat non fermentum ac, tempor eu turpis.
               Proin nulla eros, placerat non ipsum ut, dapibus ullamcorper ex.
@@ -129,7 +130,7 @@ function ProgressBar() {
 
           <div className="section-content analysis">
             <h2>Success Stories</h2>
-            <p className="progress-details"> {/* Add the class "progress-details" */}
+            <p className="progress-details">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
               neque justo, consequat non fermentum ac, tempor eu turpis.
               Proin nulla eros, placerat non ipsum ut, dapibus ullamcorper ex.

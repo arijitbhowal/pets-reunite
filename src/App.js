@@ -6,6 +6,7 @@ import Form from "./components/Form";
 import Design from "./Design";
 import Loginhome from "./components/Loginhome";
 import './App.css';
+import PasswordReset from "./components/PasswordReset";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path='/login' element={<Login/>}/>
       <Route path='/form' element={<Form/>} />
       <Route path='/home' element={<Loginhome/>} />
+      <Route path='/resetpassword'element={<PasswordReset/>} />
     </Routes>
     </div>
   );
