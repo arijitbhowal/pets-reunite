@@ -1,8 +1,6 @@
 /* Form Container */
 .report-pet {
   width: 100vw;
-  padding: 2rem 1rem;
-  z-index: -1;
 }
 
 @media (min-width: 768px) {
@@ -15,6 +13,7 @@
 .report-form {
   color: #333;
   padding: 1rem 1rem;
+  overflow-x: hidden;
 }
 
 @media (min-width: 768px) {
@@ -152,8 +151,12 @@
 }
 
 @media (max-width: 800px) {
+  .report-form__container{
+    margin: 70px auto 0 auto;
+  }
   .report-form__sub-container {
     flex-direction: column;
+    
   }
 }
 

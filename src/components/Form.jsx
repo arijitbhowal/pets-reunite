@@ -1,79 +1,111 @@
-import React, { useState } from 'react';
-import './Form.css';
-import { AiOutlineFileAdd } from 'react-icons/ai'; // Import the AiOutlineFileAdd icon
+import React, { useState } from "react";
+import "./Form.css";
+import { AiOutlineFileAdd } from "react-icons/ai";
+import Navbar from "./Navbar";
+import { useNavigate } from "react-router-dom";
 
-function LostPetForm() {
-  const [petName, setPetName] = useState('');
-  const [ownerName, setOwnerName] = useState('');
-  const [date, setDate] = useState('');
-  const [city, setCity] = useState('');
-  const [email, setEmail] = useState('');
-  const [description, setDescription] = useState('');
-  const [value, setValue] = useState('');
-  const [status, setStatus] = useState('');
-  const [suggestions, setSuggestions] = useState([]);
+const LostPetForm = () => {
+  const history = useNavigate();
+  const [formData, setFormData] = useState({
+    petStatus: "",
+    type: "",
+    sex: "",
+    petName: "",
+    lastSeenAdd: "",
+    email: "",
+    lastSeenDate: "",
+    description: "",
+    reportImage: null,
+  });
+
   const [errors, setErrors] = useState({});
-  const [modalShow, setModalShow] = useState(false);
   const [reportImage, setReportImage] = useState(null);
-  const pathname = window.location.pathname;
 
-  // Define your handleSelect and renderSuggestions functions here
+  const handleImageChange = (e) => {
+    console.log(e.target.files[0]);
+    setReportImage(e.target.files[0]);
+  };
 
-  const handleSubmit = (e) => {
+  const handleImageSubmit = async (e) => {
     e.preventDefault();
-
-    // You can use the form data here for further processing
-    console.log('Submitted Data:', {
-      petName,
-      ownerName,
-      date,
-      city,
-      email,
-      description,
-    });
-
-    // You can add your logic to handle the form submission, like sending it to a server, etc.
+    const formData = new FormData();
+    formData.append("reportImage", reportImage);
   };
 
   const handleSubmitReport = async (e) => {
     e.preventDefault();
-    // This function can be updated with your server logic, for now, it's empty.
+    try {
+      console.log(formData);
+      const res = await fetch("http://localhost:5000/api/pets", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      console.log(data);
+
+      if (data.status === 422 || !data) {
+        throw new Error("Form not submitted");
+      }
+
+      window.alert("Form Submitted Successfully");
+      console.log("Form Submitted Successfully");
+      history("/search");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      window.alert("Form submission failed");
+    }
   };
 
-  const renderError = () => {
-    // Your renderError function here
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+
+  };
+
+  const renderError = (errorName) => {
+    return (
+      <span className="report-form__error">
+        {errors[errorName] && `This field is required.`}
+      </span>
+    );
   };
 
   return (
     <div className="report-pet">
-      <div className="report-form__container" style={{ backgroundImage: 'url("../assets/background-paws-orange-min.jpg")', backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+      <Navbar />
+      <div className="report-form__container">
         <h2 className="report-form__header">
           <AiOutlineFileAdd size={40} className="report-form__header-icon" />
           Report A Pet
         </h2>
-        <form className="report-form" onSubmit={handleSubmitReport} id="report-form">
+        <form
+          className="report-form"
+          method="POST"
+          onSubmit={handleSubmitReport}
+          id="report-form"
+          encType="multipart/form-data"
+        >
           <div className="report-form__status">
             <p className="report-form__label">Pet Status</p>
             <input
               type="radio"
-              name="status"
+              name="petStatus"
               id="Lost"
               value="Lost"
               className="report-form__radio-input"
-              defaultChecked={false}
-              checked={pathname.includes("lost")}
+              onChange={handleChange}
             />
             <label className="report-form__radio-label report-form__radio-label-tag">
               Lost
             </label>
             <input
               type="radio"
-              name="status"
+              name="petStatus"
               id="Found"
               value="Found"
               className="report-form__radio-input"
-              defaultChecked={false}
-              checked={pathname.includes("found")}
+              onChange={handleChange}
             />
             <label className="report-form__radio-label report-form__radio-label-tag">
               Found
@@ -85,16 +117,16 @@ function LostPetForm() {
               <input
                 type="radio"
                 name="type"
+                onChange={handleChange}
                 id="Dog"
                 value="Dog"
                 className="report-form__radio-input"
-                defaultChecked
               />
               <label className="report-form__radio-label">Dog</label>
-
               <input
                 type="radio"
                 name="type"
+                onChange={handleChange}
                 id="Cat"
                 value="Cat"
                 className="report-form__radio-input"
@@ -106,17 +138,16 @@ function LostPetForm() {
               <input
                 type="radio"
                 name="sex"
+                onChange={handleChange}
                 id="Male"
                 value="Male"
                 className="report-form__radio-input"
-                defaultChecked
               />
               <label className="report-form__radio-label">Male</label>
-
               <input
-                type
-                ="radio"
+                type="radio"
                 name="sex"
+                onChange={handleChange}
                 id="Female"
                 value="Female"
                 className="report-form__radio-input"
@@ -129,41 +160,38 @@ function LostPetForm() {
               Pet Name
               <input
                 type="text"
-                name="name"
+                name="petName"
+                value={formData.petName}
+                onChange={handleChange}
                 className={
-                  !errors.name
+                  !errors.petName
                     ? "report-form__input"
                     : "report-form__input report-form__input--error"
                 }
                 placeholder="Enter Unknown If You Don't Know the Name"
                 onBlur={(e) => {
-                  setErrors({ ...errors, name: e.target.value === "" });
+                  setErrors({ ...errors, petName: e.target.value === "" });
                 }}
               />
-              {errors.name && renderError()}
+              {errors.petName && renderError()}
             </label>
             <label className="report-form__label report-form__label-set">
               Last Seen Address
               <input
-                name="address"
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
+                name="lastSeenAdd"
+                value={formData.lastSeenAdd}
+                onChange={handleChange}
                 placeholder="Enter the Nearest Address Last Seen"
                 className={
-                  !errors.address
+                  !errors.lastSeenAdd
                     ? "report-form__input"
                     : "report-form__input report-form__input--error"
                 }
                 onBlur={(e) => {
-                  setErrors({ ...errors, address: e.target.value === "" });
+                  setErrors({ ...errors, lastSeenAdd: e.target.value === "" });
                 }}
               />
               {errors.address && renderError()}
-              {status === "OK" && (
-                <ul className="report-form__address-list">
-                  {/* Replace with your address suggestions */}
-                </ul>
-              )}
             </label>
           </div>
           <div className="report-form__sub-container">
@@ -172,6 +200,8 @@ function LostPetForm() {
               <input
                 type="email"
                 name="email"
+                value={formData.email}
+                onChange={handleChange}
                 placeholder="Enter Your Email"
                 className={
                   !errors.email
@@ -188,15 +218,17 @@ function LostPetForm() {
               Last Seen Date
               <input
                 type="date"
-                name="date"
-                min="2021-01-01"
+                name="lastSeenDate"
+                min="2022-01-01"
+                value={formData.lastSeenDate}
+                onChange={handleChange}
                 className={
-                  !errors.date
+                  !errors.lastSeenDate
                     ? "report-form__input"
                     : "report-form__input report-form__input--error"
                 }
                 onBlur={(e) => {
-                  setErrors({ ...errors, date: e.target.value === "" });
+                  setErrors({ ...errors, lastSeenDate: e.target.value === "" });
                 }}
               />
               {errors.date && renderError()}
@@ -208,6 +240,8 @@ function LostPetForm() {
               <textarea
                 type="text"
                 name="description"
+                value={formData.description}
+                onChange={handleChange}
                 className="report-form__textarea"
                 placeholder="Enter detailed descriptions will boost the reunite chances, e.g. breed, age, color, collar/chip/tattoo..."
               />
@@ -223,9 +257,8 @@ function LostPetForm() {
                 type="file"
                 name="image"
                 id="reportImage"
-                onChange={(e) => {
-                  setReportImage(e.target.files[0]);
-                }}
+                value={formData.reportImage}
+                onChange={handleChange}
               />
             </label>
           </div>
@@ -236,6 +269,6 @@ function LostPetForm() {
       </div>
     </div>
   );
-}
+};
 
 export default LostPetForm;
