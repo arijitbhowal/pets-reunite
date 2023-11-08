@@ -1,25 +1,86 @@
 html,
 body {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
+  width: 100vw;
+  height:auto;
+  overflow-y:auto;
   overflow-x: hidden;
-  background-color: #d7ab9d;
-}
 
+  
+}
+.nav{
+    position: absolute;
+    left: 0;
+    top:0;
+    width:100vw;
+}
 .main-content {
   display: flex;
-  padding: 10px;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100vw;
+  height: 100vh;
+  padding: 0px;
 }
-@media screen and (min-width: 1440px) {
-  .main-content {
-    flex-direction: row;
-    height: 100vh;
-    width: 100vw;
+.intro-home{
+  width: 100%;
+}
+html {
+  scroll-behavior: smooth;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: auto;
+  width: 100vw;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+
+.navbar.transparent {
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
   }
-}
-@media screen and (max-width: 1439px) {
-  .main-content {
-    flex-direction: column;
-    width: 100vw;
+  
+  /* Style for the logo */
+  .logo img {
+    width: 50px; /* Set the width of your logo image */
+    height: auto;
+    margin-right: 10px; /* Adjust as needed */
   }
-}
+  
+  /* Style for the logo name */
+  .logo span {
+    font-size: 20px; /* Adjust font size as needed */
+    font-weight: 500; /* Adjust font weight as needed */
+  }
+  
+  /* Style for the Sign Up and Sign In buttons */
+  .signup-signin button {
+    background-color: #073b4c; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    padding: 10px 20px; /* Adjust padding as needed */
+    margin-left: 10px; /* Adjust margin as needed */
+    cursor: pointer;
+  }
+  
+  /* Style for the Sign In button (optional) */
+  .signup-signin .signin-button {
+    background-color: transparent; /* Transparent background for Sign In button */
+    color: #073b4c; /* Text color for Sign In button */
+  }
+  
+  /* Hide Sign Up and Sign In buttons in mobile */
+  @media screen and (max-width: 768px) {
+    .signup-signin {
+      display: none; /* Hide the entire div containing the buttons */
+    }
+  }

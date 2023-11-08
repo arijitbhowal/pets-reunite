@@ -1,0 +1,14 @@
+/* SearchPet.css */
+.search-pet-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100vw; /* Ensure the parent container takes the full width */
+}
+
+@media screen and (max-width: 1000px) {
+  .search-pet-container {
+    flex-direction: column;
+    align-items: center; /* Center the items horizontally on small screens */
+  }
+}

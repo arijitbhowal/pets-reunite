@@ -1,0 +1,60 @@
+/* Footer.css */
+
+.mdb-social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .mdb-social-icons .m-1 {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.5rem;
+    transition: background-color 0.3s;
+    margin: 5px;
+  }
+  
+  .mdb-social-icons .m-1.facebook {
+    background-color: #3b5998;
+  }
+  
+  .mdb-social-icons .m-1.twitter {
+    background-color: #55acee;
+  }
+  
+  .mdb-social-icons .m-1.google {
+    background-color: #dd4b39;
+  }
+  
+  .mdb-social-icons .m-1.instagram {
+    background-color: #ac2bac;
+  }
+  
+  .mdb-social-icons .m-1.linkedin {
+    background-color: #0082ca;
+  }
+  
+  .mdb-social-icons .m-1.github {
+    background-color: #333333;
+  }
+  
+  /* Remove underline from links within the footer */
+  .mdb-social-icons a {
+    text-decoration: none;
+  }
+  
+  
+  .text-center p-3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px; /* Increase the height as needed */
+}

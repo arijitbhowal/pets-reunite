@@ -1,0 +1,39 @@
+.tag--blue {
+    background-color: lightskyblue;
+    width: 4rem;
+    height: 2rem;
+    color: black;
+    font-size: 1rem;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @media screen and (min-width: 1024px) {
+    .tag--blue {
+      font-size: 1.5rem;
+      width: 6rem;
+      height: 2.5rem;
+    }
+  }
+  
+  .tag--orange {
+    background-color: orange;
+    width: 4rem;
+    height: 2rem;
+    color: white;
+    font-size: 1rem;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @media screen and (min-width: 1024px) {
+    .tag--orange {
+      font-size: 1.5rem;
+      width: 6rem;
+      height: 2.5rem;
+    }
+  }

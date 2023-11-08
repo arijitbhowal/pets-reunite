@@ -8,23 +8,21 @@
   padding-top: 150px;
   font-size: 32px;
   font-weight: medium;
+  z-index: 2;
 }
-.find-buttons {
-  display: flex;
-  gap: 10px; /* Add the desired space between the buttons */
-}
-.find-button {
-  border-radius: 5px;
+.get-started {
   background-color: #073b4c;
-  color: white;
-  width: 176px;
-  height: 31px;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 24px;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #0a546c;
+  }
 }
 @media (max-width: 768px) {
   .findpet {
@@ -42,10 +40,5 @@
   .find-pet {
     flex-direction: column;
     justify-content: center; /* Center buttons vertically */
-  }
-
-  .find-button {
-    width: 40vw; /* Take up full width on mobile */
-    text-align: center; /* Center text horizontally */
   }
 }

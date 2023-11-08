@@ -1,0 +1,40 @@
+/* Homepage-specific styles */
+.homepage-container {
+  text-align: center; /* Center align the content */
+}
+
+.toggle-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.toggle-button {
+  background-color: #073b4c;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 30px;
+}
+
+.toggle-button:hover {
+  background-color: #004e64;
+}
+
+.map-container {
+  width: 80%; /* Set the desired width for MapComponent */
+  margin: 0 auto; /* Center the MapComponent horizontally */
+}
+@media screen and (max-width: 768px) {
+  .toggle-button-container {
+    justify-content: center; /* Center the button for small screens */
+    margin-top: 20px;
+  }
+
+  .toggle-button {
+    margin-right: 0;
+  }
+}

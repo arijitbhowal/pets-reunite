@@ -134,3 +134,8 @@ form input[type="submit"] {
   color: #fff;
   border: none;
 }
+
+.error-message{
+  color: red;
+  font-weight: 500;
+}

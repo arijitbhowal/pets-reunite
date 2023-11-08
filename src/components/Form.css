@@ -1,71 +1,249 @@
-/* Form.css */
-
-.form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+/* Form Container */
+.report-pet {
+  width: 100vw;
 }
 
-.lost-pet-form-container {
-  background-color: #eed9d1;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 70vw;
-  margin: 0 auto;
-}
-
-.lost-pet-form-title {
-  text-align: center;
-}
-
-.form-group {
-  margin-top: 10px;
-}
-
-.form-group-item {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-}
-
-label {
-  font-weight: bold;
-}
-
-input[type="text"],
-input[type="date"],
-input[type="email"],
-textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-top: 5px;
-}
-
-.submit-button {
-  background-color: #073b4c;
-  width: 100%;
-  color: white;
-  font-size: 15px;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.left,
-.right {
-  /* Add any styling for the left and right divs here */
-}
-
-/* Media query for responsiveness (adjust as needed) */
-@media (max-width: 768px) {
-  .lost-pet-form-container {
-    width: 100%;
+@media (min-width: 768px) {
+  .report-pet {
+    padding: 5rem 0;
   }
+}
+
+/* Form Styles */
+.report-form {
+  color: #333;
+  padding: 1rem 1rem;
+  overflow-x: hidden;
+}
+
+@media (min-width: 768px) {
+  .report-form {
+    padding: 1rem 3rem;
+  }
+}
+
+/* Form Container */
+.report-form__container {
+  position: relative;
+  width: 100%;
+  max-width: 80vw;
+  margin: 0 auto;
+  border-radius: 10px;
+
+  /* Add a box shadow on all sides */
+  box-shadow: 5px 5px 10px rgba(19, 24, 44, 0.1),
+    -5px -5px 10px rgba(19, 24, 44, 0.1);
+  overflow-y: auto;
+  z-index: 2;
+
+  /* Add a border and translucent white background */
+  border: 2px solid #fff; /* You can adjust the border width and color */
+  background: rgba(255, 255, 255, 0.5); /* Adjust the opacity as needed */
+}
+
+@media (min-width: 768px) {
+  .report-form__container {
+    width: 75%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .report-form__container {
+    width: 50%;
+  }
+}
+
+/* Form Header */
+.report-form__header {
+  background-color: #eed9d1;
+  border-radius: 5px 5px 0 0;
+  padding: 1rem 3rem;
+  color: #000;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.report-form__header-icon {
+  margin-right: 0.5rem;
+}
+
+/* Pet Status Radio Buttons */
+.report-form__status {
+  background-color: #f0f0f0;
+  box-shadow: 5px 5px 10px rgba(19, 24, 44, 0.1);
+  border-radius: 10px;
+  margin: 0 auto 0.5rem;
+  width: 90%;
+  display: flex; /* Use Flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+@media (min-width: 768px) {
+  .report-form__status {
+    width: 60%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .report-form__status {
+    width: 45%;
+  }
+}
+
+/* Form Labels and Radio Buttons */
+.report-form__label {
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-right: 1rem;
+}
+
+.report-form__label-set {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .report-form__label-set {
+    width: 50%;
+  }
+}
+
+.report-form__radio-label {
+  font-size: 1.2rem;
+  margin: 0 1rem 1rem 0.5rem;
+}
+
+.report-form__radio-label-tag {
+  margin-bottom: 0;
+}
+
+/* Form Input Fields */
+.report-form__sub-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* .report-form__label {
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+} */
+
+.report-form__label-set {
+  flex: 1;
+  margin-right: 1rem; /* Add margin to separate input elements */
+}
+
+.report-form__input {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  width: 100%; /* Allow the input elements to expand based on available space */
+  font-size: 1rem;
+  border: 1px solid #ccc; /* Default border style */
+}
+
+@media (max-width: 800px) {
+  .report-form__container{
+    margin: 70px auto 0 auto;
+  }
+  .report-form__sub-container {
+    flex-direction: column;
+    
+  }
+}
+
+.report-form__input:focus {
+  border: 3px solid #007bff;
+  outline: none;
+}
+
+.report-form__input--error {
+  border: 3px solid #dc3545;
+}
+
+/* Form Textarea */
+.report-form__textarea {
+  margin-top: 0.5rem;
+  height: 8rem;
+  border-radius: 4px;
+  padding: 0.5rem;
+  width: 100%;
+  resize: none;
+}
+
+.report-form__textarea:focus {
+  border: 3px solid #007bff;
+  outline: none;
+}
+
+/* Form Note and Button */
+.report-form__note {
+  font-size: 1rem;
+  font-weight: normal;
+  color: grey;
+  text-transform: none;
+}
+
+.report-form__button {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.report-form__button button {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 20px;
+  color: white;
+  background-color: #073b4c;
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover {
+    background-color: #004e64;
+  }
+}
+
+/* Address Suggestions */
+.report-form__address-list {
+  border: 3px solid #007bff;
+  width: 22rem;
+  position: absolute;
+  top: 510px;
+  border-top: none;
+  list-style: none;
+  background-color: #fff;
+}
+
+.report-form__address-item {
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+}
+
+.report-form__address-item:hover {
+  background-color: #f0f0f0;
+}
+
+.report-form__address-text {
+  font-size: 1rem;
+}
+
+.report-form__address-text--small {
+  font-weight: normal;
+}
+
+/* Field Required Text */
+.report-form__field-required {
+  font-size: 0.8rem;
+  color: #dc3545;
+}
+.report-form__radio-input{
+  height: auto;
 }

@@ -1,31 +1,93 @@
+import { signOut } from 'firebase/auth';
+import { auth } from '../FirebaseConfig';
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
+import Hamburger from './Hamburger';
+import { NavLink } from 'react-router-dom';
 import './Navbar.css';
-import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+  const history = useNavigate();
+  const [showNavbar, setShowNavbar] = useState(false);
+  const [showSearchDropdown, setShowSearchDropdown] = useState(false);
+  const [showLostAndFoundDropdown, setShowLostAndFoundDropdown] = useState(false);
+
+  const handleShowNavbar = () => {
+    setShowNavbar(!showNavbar);
+  };
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        history('/');
+      });
+  };
+
+  const toggleSearchDropdown = () => {
+    setShowSearchDropdown(!showSearchDropdown);
+  };
+
+  const toggleLostAndFoundDropdown = () => {
+    setShowLostAndFoundDropdown(!showLostAndFoundDropdown);
+  };
 
   return (
-    <div className='navbar'>
-      <div className='logo'>
-        <img src='/logo.svg' alt='logo' />
-        <p>Pets Reunite</p>
+    <nav className="navbar">
+      <div className="nav-container">
+        <div className="logo">
+          <img src="/logo.svg" alt="Logo" />
+          Pets Reunite
+        </div>
+        <div className="menu-icon" onClick={handleShowNavbar}>
+          <Hamburger />
+        </div>
+        <div className={`nav-elements ${showNavbar && 'active'}`}>
+          <ul>
+            <li >
+              <NavLink to='/home'>HOME</NavLink>
+            </li>
+            <li>
+              <div className="dropdown dropdown-nav" onMouseEnter={toggleSearchDropdown} onMouseLeave={toggleSearchDropdown}>
+                <span><img src='/search-icon.svg' className="search-icon" alt="Search" />SEARCH</span>
+                {showSearchDropdown && (
+                  <div className="dropdown-content">
+                    <NavLink to='/search'>Pet Report List</NavLink>
+                    <NavLink to='/map'>Search by Map</NavLink>
+                  </div>
+                )}
+              </div>
+            </li>
+            <li>
+              <div className="dropdown dropdown-nav" onMouseEnter={toggleLostAndFoundDropdown} onMouseLeave={toggleLostAndFoundDropdown}>
+                <span><img src='/paw-icon.svg' className='paw-icon' alt="Lost and Found" />LOST AND FOUND</span>
+                {showLostAndFoundDropdown && (
+                  <div className="dropdown-content">
+                    <NavLink to='/lost'>Lost a Pet</NavLink>
+                    <NavLink to='/found'>Found a Pet</NavLink>
+                  </div>
+                )}
+              </div>
+            </li>
+            <li className="mobile-buttons">
+              <NavLink to='/lost'>LOST A PET</NavLink>
+            </li>
+            <li className="mobile-buttons">
+              <NavLink to='/found'>FOUND A PET</NavLink>
+            </li>
+            <li className="mobile-buttons">
+              <NavLink to='/map'>SEARCH BY MAP</NavLink>
+            </li>
+            <li className="mobile-buttons">
+              <NavLink to='/search'>PET REPORTS</NavLink>
+            </li>
+            <li>
+              <button className='mobile'onClick={handleLogout}>Logout</button>
+            </li>
+          </ul>
+        </div>
       </div>
-        <ul className="nav-links">
-          <li>
-            <Link to='/'>HOME</Link>
-          </li>
-          <li>
-            <Link to='/form'>
-              <img src='/search-icon.svg' alt='Search' className='search-icon' />
-              LOST AND FOUND
-            </Link>
-          </li>
-          <li>
-            <Link to='/login'>LOGIN/REGISTER</Link>
-          </li>
-        </ul>
-      </div>
+    </nav>
   );
-}
+};
 
 export default Navbar;

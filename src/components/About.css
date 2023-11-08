@@ -1,0 +1,69 @@
+.about-container {
+  display: flex;
+  width: 100vw;
+  height: 700px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+.image-container {
+  background-image: url(../assets/doggo.jfif);
+  background-size: cover;
+  flex: 1;
+  position: relative;
+  height: 700px; /* You can adjust the height as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+}
+
+.about-text {
+  background-color: rgba(255, 255, 255, 0.4); /* Translucent white background (adjust the alpha value as needed) */
+  font-size: 25px; /* Default font size */
+  font-weight: 500;
+  line-height: 1.5;
+  color: #333;
+  width: 70vw;
+  max-height: fit-content; /* Default maximum height for the text container */
+  overflow-y: hidden;
+  overflow-x: hidden;
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+}
+
+/* Media query for smaller devices */
+@media (max-width: 845px) {
+  .about-text {
+    font-size: 20px; /* Reduce font size for smaller devices */
+    max-height: 700px; /* Adjust the maximum height for smaller screens */
+  }
+  
+}
+@media (max-width: 768px) {
+  .about-text {
+    font-size: 12px; /* Reduce font size for smaller devices */
+    max-height: 700px; /* Adjust the maximum height for smaller screens */
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+.success-button {
+  background-color: #0077B5; /* Background color */
+  color: #fff; /* Text color */
+  padding: 10px 20px; /* Padding */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Add rounded corners */
+  cursor: pointer; /* Show a pointer cursor on hover */
+  transition: background-color 0.3s, color 0.3s; /* Add a smooth transition effect */
+
+  /* Optional: Add hover styles */
+  &:hover {
+    background-color: #00548A; /* Background color on hover */
+    color: #fff; /* Text color on hover */
+  }
+}
