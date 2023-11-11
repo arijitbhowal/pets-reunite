@@ -1,6 +1,6 @@
 /* MapComponent.css */
 .map-container {
-  max-width: 100%;
+  width: 100vw;
   max-height: 500px; /* Set a maximum height for the map container */
   padding: 0;
   position: relative;

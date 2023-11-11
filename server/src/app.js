@@ -29,6 +29,16 @@ app.post("/api/pets", async (req, res) => {
   res.json(doc);
 });
 
+app.get("/api/pets", async (req, res) => {
+  try{
+    const pets = await Pet.find();
+    res.json(pets);
+  }
+  catch(err){
+    res.json(err);
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

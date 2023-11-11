@@ -2,12 +2,13 @@ import React from "react";
 import "./Home.css";
 import Findpet from "./Findpet";
 import OurModel from "./OurModel";
+import Design from "../Design";
 import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
     <div className="home">
-      {/* Transparent Navbar */}
+            <Design/>
       <div className="navbar transparent">
         <div className="logo">
         <img src="/logo.svg" alt="Logo" />

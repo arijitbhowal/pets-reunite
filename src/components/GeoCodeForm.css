@@ -1,0 +1,14 @@
+.report-form__button button {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 20px;
+    color: white;
+    background-color: #073b4c;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 1rem; /* Add margin for spacing */
+  }
+  
+  .report-form__button button:hover {
+    background-color: #004e64;
+  }

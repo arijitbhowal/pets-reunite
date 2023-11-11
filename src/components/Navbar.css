@@ -129,7 +129,7 @@ body {
     height: 50px;
     margin-right: 10px;
   }
-  .search-icon, .paw-icon {
+  .search-icon, .paw-icon, .user-icon {
     width: 20px;
     height: 20px;
     margin-right: 5px;
@@ -150,6 +150,7 @@ body {
   position: absolute;
   top: 100%; /* Position the dropdown below the parent element */
   left: 0;
+  padding-right: 20px;
   background-color: #000;
   min-width: 160px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);

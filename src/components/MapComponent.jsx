@@ -1,5 +1,6 @@
 import React from 'react';
 import './MapComponent.css';
+import Navbar from './Navbar';
 
 const MapComponent = () => {
   return (

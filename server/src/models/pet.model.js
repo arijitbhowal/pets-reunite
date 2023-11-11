@@ -1,15 +1,17 @@
 const mongoose = require("mongoose");
 
 const petSchema = new mongoose.Schema({
-  status: String, // e.g., "Lost" or "Found"
-  type: String, // e.g., "Dog" or "Cat"
-  sex: String, // e.g., "Male" or "Female"
-  petName: String, // Pet name or "Unknown" if not provided
-  lastSeenAdd: String, // Last seen address
-  email: String, // Contact email
-  lastSeenDate: Date, // Last seen date
-  description: String, // Detailed description
-  reportImage: String,
-});
+  petStatus: String,
+  type: String,
+  sex: String,
+  petName: String,
+  lastSeenAdd: String,
+  email: String,
+  lastSeenDate: String,
+  description: String,
+  reportImage: String, // Assuming you store image path or URL
+  lat: Number,
+  long: Number,
+},{timestamp:true});
 
 module.exports = Pet = mongoose.model("Pet", petSchema);
