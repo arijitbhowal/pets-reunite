@@ -32,28 +32,40 @@ const GeoCodeForm = ({ setAddress, setLat, setLong }) => {
   };
 
   return (
-    <div className="report-form__sub-container">
-      <label className="report-form__label report-form__label-set">
-        Last Seen Address
+    <div className="geocoder-sub-container">
+      <label className="geocoder__label geocoder__label-set">
+        Location
         <input
           type="text"
           name="address"
           value={address}
           onChange={(e) => setAddressState(e.target.value)}
-          className="report-form__input"
+          className="geocoder__input"
           placeholder="Enter Last Seen Address"
         />
       </label>
-      <label className="report-form__label report-form__label-set">
+      <label className="geocoder__label geocoder__label-set">
         Latitude
-        <input type="text" name="lat" value={lat} readOnly className="report-form__input" />
+        <input
+          type="text"
+          name="lat"
+          value={lat}
+          readOnly
+          className="geocoder__input"
+        />
       </label>
-      <label className="report-form__label report-form__label-set">
+      <label className="geocoder__label geocoder__label-set">
         Longitude
-        <input type="text" name="long" value={long} readOnly className="report-form__input" />
+        <input
+          type="text"
+          name="long"
+          value={long}
+          readOnly
+          className="geocoder__input"
+        />
       </label>
-      <label className="report-form__label report-form__label-set">
-        <button onClick={handleButtonClick}>Get Coordinates</button>
+      <label className="geocoder__label geocoder__label-set">
+        <button className="geocoder__input"onClick={handleButtonClick}>Get Coordinates</button>
       </label>
     </div>
   );

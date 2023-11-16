@@ -1,14 +1,73 @@
-.report-form__button button {
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 20px;
-    color: white;
-    background-color: #073b4c;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-top: 1rem; /* Add margin for spacing */
-  }
-  
-  .report-form__button button:hover {
-    background-color: #004e64;
-  }
+/* GeoCodeForm.css */
+
+.geocoder-sub-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px; /* Adjust the padding as needed */
+}
+
+.geocoder__label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.geocoder__input {
+  padding: 12px; /* Increase padding for the inputs */
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px; /* Increase font size for the inputs */
+}
+
+.geocoder__input[readonly] {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.geocoder__label-set {
+  display: flex;
+  flex-direction: column;
+}
+
+.geocoder__label-set button {
+  padding: 12px; /* Increase padding for the button */
+  background-color: #073b4c;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px; /* Increase font size for the button */
+  transition: background-color 0.3s;
+}
+
+.geocoder__label-set button:hover {
+  background-color: #004e64;
+}
+
+/* Add the following styles to your CSS file */
+
+.geocode-center-button {
+  display: block;
+  margin: auto;
+  margin-top: 20px; /* Adjust as needed for spacing */
+}
+
+
+
+.geocode-toggle-button {
+  padding: 10px 20px;
+  background-color: #073b4c; /* Change the color as needed */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.geocode-toggle-button:hover {
+  background-color: #004e64; /* Change the hover color as needed */
+}

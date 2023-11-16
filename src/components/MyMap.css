@@ -1,0 +1,21 @@
+
+
+/* MyMap.css */
+
+.map-button {
+  background-color: #073b4c; /* Green background color */
+  border: none; /* Remove border */
+  color: white; /* White text color */
+  padding: 10px 20px; /* Padding */
+  text-align: center; /* Center text */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Display as inline-block for horizontal alignment */
+  font-size: 16px; /* Font size */
+  margin: 4px 2px; /* Margin between buttons */
+  cursor: pointer; /* Cursor pointer on hover */
+  border-radius: 4px; /* Rounded corners */
+}
+
+.map-button:hover {
+  background-color: #004e64; /* Darker green color on hover */
+}

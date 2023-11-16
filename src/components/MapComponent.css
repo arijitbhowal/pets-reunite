@@ -1,7 +1,7 @@
 /* MapComponent.css */
 .map-container {
   width: 100vw;
-  max-height: 500px; /* Set a maximum height for the map container */
+  max-height: 100vh;
   padding: 0;
   position: relative;
   overflow: hidden;

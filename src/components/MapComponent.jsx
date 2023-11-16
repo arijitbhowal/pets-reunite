@@ -1,11 +1,17 @@
-import React from 'react';
-import './MapComponent.css';
-import Navbar from './Navbar';
+import React from "react";
+import "./MapComponent.css";
+import MyMap from "./MyMap";
+import { useJsApiLoader } from "@react-google-maps/api";
+import { mapOptions } from "./MapConfig";
 
 const MapComponent = () => {
+  const { isLoaded } = useJsApiLoader({
+    id: mapOptions.googleMapApiKey,
+    googleMapsApiKey: mapOptions.googleMapApiKey,
+  });
   return (
     <div className="map-container">
-      <img src="/mapeg.jpg" alt="Map" className="map" />
+      <MyMap isLoaded={isLoaded} />
     </div>
   );
 };

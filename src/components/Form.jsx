@@ -3,6 +3,7 @@ import "./Form.css";
 import { AiOutlineFileAdd } from "react-icons/ai";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
+import GeoCodeForm from "./GeoCodeForm";
 
 const LostPetForm = () => {
   const history = useNavigate();
@@ -16,10 +17,13 @@ const LostPetForm = () => {
     lastSeenDate: "",
     description: "",
     reportImage: null,
+    latitude: "",
+    longitude: "",
   });
 
   const [errors, setErrors] = useState({});
   const [reportImage, setReportImage] = useState(null);
+  const [geoCodeFormVisible, setGeoCodeFormVisible] = useState(false);
 
   const handleImageChange = (e) => {
     console.log(e.target.files[0]);
@@ -59,9 +63,19 @@ const LostPetForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-
+  
+    // Handle latitude and longitude separately
+    if (name === "latitude" || name === "longitude") {
+      setFormData({ ...formData, [name]: parseFloat(value) });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
+
+  const toggleGeoCodeForm = () => {
+    setGeoCodeFormVisible(!geoCodeFormVisible);
+  };
+
 
   const renderError = (errorName) => {
     return (
@@ -194,6 +208,30 @@ const LostPetForm = () => {
               {errors.address && renderError()}
             </label>
           </div>
+
+          <div className="report-form__sub-container">
+            <label className="report-form__label report-form__label-set">
+              Latitude
+              <input
+                type="number"
+                name="latitude"
+                value={formData.latitude}
+                onChange={handleChange}
+                className="report-form__input"
+              />
+            </label>
+            <label className="report-form__label report-form__label-set">
+              Longitude
+              <input
+                type="number"
+                name="longitude"
+                value={formData.longitude}
+                onChange={handleChange}
+                className="report-form__input"
+              />
+            </label>
+          </div>
+          <p>(Use the Geocoder below to get the latitude and longitude of the location)</p>
           <div className="report-form__sub-container">
             <label className="report-form__label report-form__label-set">
               Contact Email
@@ -267,6 +305,13 @@ const LostPetForm = () => {
           </div>
         </form>
       </div>
+      {geoCodeFormVisible && <GeoCodeForm />}
+      <button
+  className="geocode-toggle-button geocode-center-button"
+  onClick={toggleGeoCodeForm}
+>
+  {geoCodeFormVisible ? "Hide GeoCoder" : "Show GeoCoder"}
+</button>
     </div>
   );
 };

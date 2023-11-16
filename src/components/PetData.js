@@ -1,0 +1,147 @@
+// petData.js
+
+const petData = [
+    {
+      type: "Dog",
+      sex: "Male",
+      petName: "Tom",
+      lastSeenAdd: "Mumbai, India",
+      email: "arijitaeiou2002@gmail.com",
+      lastSeenDate: "2023-11-01",
+      description: "Kalua",
+      reportImage: null,
+      latitude: 19.0760,
+      longitude: 72.8777,
+      petStatus: "Lost",
+      __v: 0
+    },
+    {
+      type: "Cat",
+      sex: "Female",
+      petName: "Whiskers",
+      lastSeenAdd: "Delhi, India",
+      email: "example@gmail.com",
+      lastSeenDate: "2023-11-02",
+      description: "Cute and playful",
+      reportImage: null,
+      latitude: 28.6139,
+      longitude: 77.2090,
+      petStatus: "Found",
+      __v: 0
+    },
+    {
+      type: "Bird",
+      sex: "Unknown",
+      petName: "Tweetie",
+      lastSeenAdd: "Bangalore, India",
+      email: "birdlover@gmail.com",
+      lastSeenDate: "2023-11-03",
+      description: "Colorful feathers",
+      reportImage: null,
+      latitude: 12.9716,
+      longitude: 77.5946,
+      petStatus: "Lost",
+      __v: 0
+    },
+    {
+      type: "Fish",
+      sex: "Male",
+      petName: "Bubbles",
+      lastSeenAdd: "Kolkata, India",
+      email: "fishkeeper@gmail.com",
+      lastSeenDate: "2023-11-04",
+      description: "Small and lively",
+      reportImage: null,
+      latitude: 22.5726,
+      longitude: 88.3639,
+      petStatus: "Found",
+      __v: 0
+    },
+    {
+      type: "Rabbit",
+      sex: "Female",
+      petName: "Fluffy",
+      lastSeenAdd: "Chennai, India",
+      email: "bunnylover@gmail.com",
+      lastSeenDate: "2023-11-05",
+      description: "Soft fur and loves carrots",
+      reportImage: null,
+      latitude: 13.0827,
+      longitude: 80.2707,
+      petStatus: "Lost",
+      __v: 0
+    },
+    {
+      type: "Dog",
+      sex: "Male",
+      petName: "Buddy",
+      lastSeenAdd: "Hyderabad, India",
+      email: "doglover@gmail.com",
+      lastSeenDate: "2023-11-06",
+      description: "Friendly and energetic",
+      reportImage: null,
+      latitude: 17.3850,
+      longitude: 78.4867,
+      petStatus: "Found",
+      __v: 0
+    },
+    {
+      type: "Cat",
+      sex: "Female",
+      petName: "Mittens",
+      lastSeenAdd: "Ahmedabad, India",
+      email: "catfan@gmail.com",
+      lastSeenDate: "2023-11-07",
+      description: "Soft and cuddly",
+      reportImage: null,
+      latitude: 23.0225,
+      longitude: 72.5714,
+      petStatus: "Lost",
+      __v: 0
+    },
+    {
+      type: "Parrot",
+      sex: "Unknown",
+      petName: "Sunny",
+      lastSeenAdd: "Jaipur, India",
+      email: "parrotlover@gmail.com",
+      lastSeenDate: "2023-11-08",
+      description: "Talkative and colorful",
+      reportImage: null,
+      latitude: 26.9124,
+      longitude: 75.7873,
+      petStatus: "Found",
+      __v: 0
+    },
+    {
+      type: "Goldfish",
+      sex: "Male",
+      petName: "Goldie",
+      lastSeenAdd: "Pune, India",
+      email: "goldfishkeeper@gmail.com",
+      lastSeenDate: "2023-11-09",
+      description: "Shiny scales and playful",
+      reportImage: null,
+      latitude: 18.5204,
+      longitude: 73.8567,
+      petStatus: "Lost",
+      __v: 0
+    },
+    {
+      type: "Turtle",
+      sex: "Male",
+      petName: "Speedy",
+      lastSeenAdd: "Lucknow, India",
+      email: "turtlefan@gmail.com",
+      lastSeenDate: "2023-11-10",
+      description: "Loves to bask in the sun",
+      reportImage: null,
+      latitude: 26.8467,
+      longitude: 80.9462,
+      petStatus: "Found",
+      __v: 0
+    }
+  ];
+  
+  export default petData;
+  

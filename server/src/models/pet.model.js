@@ -10,8 +10,8 @@ const petSchema = new mongoose.Schema({
   lastSeenDate: String,
   description: String,
   reportImage: String, // Assuming you store image path or URL
-  lat: Number,
-  long: Number,
-},{timestamp:true});
+  latitude: Number,  // Change from lat to latitude
+  longitude: Number, // Change from long to longitude
+}, { timestamps: true });
 
-module.exports = Pet = mongoose.model("Pet", petSchema);
+module.exports = mongoose.model("Pet", petSchema);
