@@ -1,6 +1,5 @@
 import { GoogleMap, Marker, InfoWindow } from "@react-google-maps/api";
-import React, { useState } from "react";
-import petData from "./PetData";
+import React, { useState, useEffect } from "react"; // Import useEffect from React
 import OrangeMarker from "../assets/marker-orange.png";
 import BlueMarker from "../assets/marker-blue.png";
 import "./MyMap.css";
@@ -24,6 +23,7 @@ const MyMap = (props) => {
   const [selectedPet, setSelectedPet] = useState(null);
   const [filterLost, setFilterLost] = useState(false);
   const [filterFound, setFilterFound] = useState(false);
+  const [pins, setPins] = useState([]); // [ { lat: 22.9734, lng: 78.6569 }, ... ]
 
   const containerStyle = {
     width: "100vw",
@@ -51,6 +51,19 @@ const MyMap = (props) => {
     }
   };
 
+  useEffect(() => {
+    const getPins = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/pets");
+        const pins = await response.json();
+        setPins(pins);
+      } catch (err) {
+        console.error(err.message);
+      }
+    };
+    getPins();
+  }, []);
+
   return (
     isLoaded && (
       <div>
@@ -72,7 +85,7 @@ const MyMap = (props) => {
           center={initialCenter}
           zoom={5}
         >
-          {petData.map((pet, index) => {
+          {pins.map((pet, index) => {
             if (
               (pet.petStatus === "Lost" && filterLost) ||
               (pet.petStatus === "Found" && filterFound)
