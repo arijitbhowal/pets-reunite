@@ -10,10 +10,12 @@ import SearchPet from "./components/SearchPet";
 import MapComponent from "./components/MapComponent";
 import Account from "./components/Account";
 import { AuthContext } from './context/AuthContext';
+import SuccessStories from "./components/SuccessStories";
 
 function App() {
 
   const {currentUser} = React.useContext(AuthContext);
+  const isAuth = currentUser ? true : false;
 
   const RequireAuth = ({children}) => {
     return currentUser ? children : <Login/>
@@ -33,6 +35,7 @@ function App() {
       <Route path='/search' element={<RequireAuth><SearchPet/></RequireAuth>} />
       <Route path='/map' element={<RequireAuth><MapComponent/></RequireAuth>} />
       <Route path='/myaccount' element={<RequireAuth><Account/></RequireAuth>} />
+      <Route path='/successstories' element={<RequireAuth><SuccessStories isAuth={isAuth}/></RequireAuth>} />
     </Routes>
     </div>
   );
