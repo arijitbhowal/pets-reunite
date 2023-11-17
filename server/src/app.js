@@ -3,6 +3,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
+
 require("./db/conn");
 const port = process.env.PORT || 5000;
 
@@ -24,18 +25,22 @@ app.post("/api/pets", async (req, res) => {
     pet.lastSeenDate = req.body.lastSeenDate;
     pet.description = req.body.description;
     pet.reportImage = req.body.reportImage;
-    pet.latitude = req.body.latitude; // Use latitude instead of lat
-    pet.longitude = req.body.longitude; // Use longitude instead of long
+    pet.latitude = req.body.latitude;
+    pet.longitude = req.body.longitude;
+    pet.userName = req.body.userName;
+    pet.userId = req.body.userId;
+    pet.timestamp = req.body.timestamp;
+
     const doc = await pet.save();
     console.log(doc);
     res.json(doc);
   } catch (error) {
-    console.error(error);
+
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
-app.get("/api/pets", async (req, res) => {
+app.get("/api/pets/maps", async (req, res) => {
   try {
     const pets = await Pet.find();
     res.json(pets);
@@ -43,6 +48,102 @@ app.get("/api/pets", async (req, res) => {
     res.json(err);
   }
 });
+
+app.get("/api/pets", async (req, res) => {
+  try {
+    const filter = {
+      petStatus: req.query.petStatus,
+      type: req.query.type,
+      sex: req.query.sex,
+    };
+
+
+
+    const pets = await Pet.find(filter);
+
+    res.json(pets);
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
+app.get('/api/pets/:id', async (req, res) => {
+  try {
+    const petId = req.params.id;
+    const pet = await Pet.findById(petId);
+
+    if (!pet) {
+      return res.status(404).json({ error: 'Pet not found' });
+    }
+
+  
+    const response = {
+      pet,
+      userId: pet.userId
+    };
+
+    res.json(response);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+
+app.put("/api/pets/:petId", async (req, res) => {
+  try {
+    const petId = req.params.petId;
+
+    const pet = await Pet.findById(petId);
+
+    if (!pet) {
+      return res.status(404).json({ error: "Pet not found" });
+    }
+
+    const userId = req.body.userId;
+
+    console.log(userId);
+
+
+  
+
+    pet.petName = req.body.petName || pet.petName;
+    pet.description = req.body.description || pet.description;
+    const updatedPet = await pet.save();
+
+    res.json(updatedPet);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+app.delete("/api/pets/:id", async (req, res) => {
+  try {
+    const petId = req.params.id;
+    const pet = await Pet.findById(petId);
+
+    if (!pet) {
+      return res.status(404).json({ error: 'Pet not found' });
+    }
+
+    const userId = req.body.userId;
+
+    if (userId && userId === pet.userId) {
+      await Pet.findByIdAndDelete(petId);
+      res.json({ message: 'Pet deleted successfully' });
+    } else {
+      res.status(403).json({ error: 'Permission denied: You can only delete your own pets' });
+    }
+  } catch (error) {
+    console.error('Error deleting pet:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

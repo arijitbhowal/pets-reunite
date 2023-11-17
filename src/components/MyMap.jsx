@@ -23,7 +23,7 @@ const MyMap = (props) => {
   const [selectedPet, setSelectedPet] = useState(null);
   const [filterLost, setFilterLost] = useState(false);
   const [filterFound, setFilterFound] = useState(false);
-  const [pins, setPins] = useState([]); // [ { lat: 22.9734, lng: 78.6569 }, ... ]
+  const [pins, setPins] = useState([]); 
 
   const containerStyle = {
     width: "100vw",
@@ -54,7 +54,7 @@ const MyMap = (props) => {
   useEffect(() => {
     const getPins = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/pets");
+        const response = await fetch("/api/pets/maps");
         const pins = await response.json();
         setPins(pins);
       } catch (err) {

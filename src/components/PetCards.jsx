@@ -1,48 +1,64 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import './PetCards.css'; // Import the CSS file
+import { Link } from 'react-router-dom';
+import './PetCards.css';
+import { auth } from '../FirebaseConfig';
 
-function PetCards() {
-  const cardsData = [
-    {
-      id: 1,
-      title: 'Doggy',
-      text: 'Some quick example text for Card 1.',
-      imageUrl: '/pet1.jpg',
-    },
-    {
-      id: 2,
-      title: 'Doggo',
-      text: 'Some quick example text for Card 2.',
-      imageUrl: '/pet2.jpg',
-    },
-    {
-      id: 3,
-      title: 'Cat',
-      text: 'Some quick example text for Card 3.',
-      imageUrl: '/pet3.jpg',
-    },
-  ];
+function PetCard({ pet, onUpdate, onDelete }) {
+  const { _id, petName, description, reportImage, userId } = pet;
+  const currentUserID = auth.currentUser ? auth.currentUser.uid : null;
+
+  const handleDelete = async () => {
+    try {
+      if (currentUserID && currentUserID === userId) {
+        await fetch(`/api/pets/${_id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            userId: currentUserID,
+          }),
+        });
+        console.log(`Pet with ID ${_id} deleted successfully.`);
+        onDelete(_id); 
+      } else {
+        console.log("Permission denied: You can only delete your own pets.");
+      }
+    } catch (error) {
+      console.error('Error deleting pet:', error);
+    }
+  };
 
   return (
-    <div className="pet-cards-container">
-      {cardsData.map((card) => (
-        <Card key={card.id} className="pet-card">
-          <Card.Img
-            variant="top"
-            src={card.imageUrl}
-            className="card-img-top"
-            alt={card.title} // Add an alt attribute for accessibility
-          />
-          <Card.Body>
-            <Card.Title className="card-title">{card.title}</Card.Title>
-            <Card.Text className="card-text">{card.text}</Card.Text>
-            <Button variant="primary" className="petcard-btn">
-              Contact
+    <Card key={_id} className="pet-card">
+      <Card.Img variant="top" src={reportImage} className="card-img-top" alt={petName} />
+      <Card.Body>
+        <Card.Title className="card-title">{petName}</Card.Title>
+        <Card.Text className="card-text">{description}</Card.Text>
+        <Link to={`/update/${_id}`}>
+          {currentUserID && currentUserID === userId && (
+            <Button variant="info" className="petcard-btn" onClick={() => onUpdate(_id)}>
+              UPDATE
             </Button>
-          </Card.Body>
-        </Card>
+          )}
+        </Link>
+        {currentUserID && currentUserID === userId && (
+          <Button variant="danger" className="petcard-btn" onClick={handleDelete}>
+            DELETE
+          </Button>
+        )}
+      </Card.Body>
+    </Card>
+  );
+}
+
+function PetCards({ pets, onUpdate, onDelete }) {
+  return (
+    <div className="pet-cards-container">
+      {pets.map((pet) => (
+        <PetCard key={pet._id} pet={pet} onUpdate={onUpdate} onDelete={onDelete} />
       ))}
     </div>
   );

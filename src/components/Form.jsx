@@ -4,6 +4,7 @@ import { AiOutlineFileAdd } from "react-icons/ai";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 import GeoCodeForm from "./GeoCodeForm";
+import { auth } from "../FirebaseConfig";
 
 const LostPetForm = () => {
   const history = useNavigate();
@@ -19,6 +20,9 @@ const LostPetForm = () => {
     reportImage: null,
     latitude: "",
     longitude: "",
+    userId: "",
+    userName: "",
+    timestamp: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -39,19 +43,28 @@ const LostPetForm = () => {
   const handleSubmitReport = async (e) => {
     e.preventDefault();
     try {
-      console.log(formData);
-      const res = await fetch("http://localhost:5000/api/pets", {
+      const timestamp = new Date().toISOString();
+      const userId = auth.currentUser.uid;
+      const userName = auth.currentUser.displayName;
+      const formDataWithTimestamp = {
+        ...formData,
+        timestamp,
+        userId,
+        userName,
+      };
+  
+      const res = await fetch("/api/pets", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formDataWithTimestamp),
       });
+  
       const data = await res.json();
-      console.log(data);
-
+  
       if (data.status === 422 || !data) {
         throw new Error("Form not submitted");
       }
-
+  
       window.alert("Form Submitted Successfully");
       console.log("Form Submitted Successfully");
       history("/search");
@@ -60,11 +73,12 @@ const LostPetForm = () => {
       window.alert("Form submission failed");
     }
   };
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
   
-    // Handle latitude and longitude separately
+
     if (name === "latitude" || name === "longitude") {
       setFormData({ ...formData, [name]: parseFloat(value) });
     } else {
