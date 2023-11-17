@@ -12,7 +12,8 @@
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    max-width: 500px ;
+    width: 100%;
   }
   
   .cp-head {
@@ -54,3 +55,9 @@
     background-color: #0056b3;
   }
   
+  @media screen and (max-width: 600px) {
+    .cpContainer{
+      max-width: 70vw;
+      width: 100%;
+    }
+  }

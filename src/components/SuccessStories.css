@@ -1,124 +1,123 @@
 * {
-    margin: 0px;
-    padding: 0px;
-    font-family: poppins;
-    box-sizing: border-box;
-  }
-  
-  #story {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .story-heading {
-    letter-spacing: 1px;
-    margin: 30px 0px;
-    padding: 10px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .story-heading h1 {
-    font-size: 2.2rem;
-    font-weight: 500;
-    background-color: #202020;
-    color: #ffffff;
-    padding: 10px 20px;
-  }
-  
-  .story-heading span {
-    font-size: 1.3rem;
-    color: #252525;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-  
-  .story-box-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-  
-  .story-box {
-    width: 500px;
-    box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-    padding: 20px;
-    margin: 15px;
-    cursor: pointer;
-    transition: all ease 0.3s;
-  }
-  
-  .story-box:hover {
-    transform: translateY(-10px);
-  }
-  
-  
-  @media (max-width: 1060px) {
-    .story-box {
-      width: 45%;
-      padding: 10px;
-    }
-  }
-  .story-box-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Updated alignment to flex-start */
-    flex-wrap: wrap;
-    width: 100%;
-    margin: 0; /* Reset margin to ensure it takes up the full width */
-  }
-  
-  /* ... (rest of your existing styles) */
-  .cp-name{
-font-size: 13px;
-color:grey;
-  }
-
-    .cp-name:hover{
-        color:black;
-    }
-.post-story{
-    font-size: 18px;
-
+  margin: 0;
+  padding: 0;
+  font-family: poppins;
+  box-sizing: border-box;
 }
+
+.story {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+}
+
+.story-heading {
+  letter-spacing: 1px;
+  margin: 30px 0;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.story-heading h1 {
+  font-size: 2.2rem;
+  font-weight: 500;
+  background-color: #202020;
+  color: #ffffff;
+  padding: 10px 20px;
+}
+
+.story-heading span {
+  font-size: 1.3rem;
+  color: #252525;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.story-box-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.story-box {
+  width: 100%; /* Make the width 100% for responsiveness */
+  max-width: 70vw; /* Set a maximum width for large devices */
+  box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 15px;
+  cursor: pointer;
+  transition: all ease 0.3s;
+}
+
+.story-box:hover {
+  transform: translateY(-10px);
+}
+
+@media (max-width: 600px) {
+  .story-box {
+    width: 80vw;
+    font-size: 14px; /* Reduce font size for smaller screens */
+  }
+}
+
+.story-box-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Updated alignment to flex-start */
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0; /* Reset margin to ensure it takes up the full width */
+}
+
+/* ... (rest of your existing styles) */
+.cp-name {
+  font-size: 13px;
+  color: grey;
+}
+
+.cp-name:hover {
+  color: black;
+}
+
+.post-story {
+  font-size: 18px;
+}
+
 /* SuccessStories.css */
 
 /* ... (previous styles) */
 
 .story-box {
-    position: relative;
-    width: 500px;
-    box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-    padding: 20px;
-    margin: 15px;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .deletepost {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-  
-  .deletepost-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .deletepost-btn img {
-    width: 20px; /* Adjust the size as needed */
-  }
-  
-  
+  position: relative;
+  box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.deletepost {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.deletepost-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.deletepost-btn img {
+  width: 20px; /* Adjust the size as needed */
+}

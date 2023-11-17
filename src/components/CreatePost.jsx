@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db, auth } from "../FirebaseConfig";
 import "./CreatePost.css";
 
@@ -14,6 +14,7 @@ function CreatePost({ isAuth }) {
       title,
       postText,
       author: { name: auth.currentUser.email, id: auth.currentUser.uid },
+      timestamp: serverTimestamp(),
     });
     window.location.reload();
   };
