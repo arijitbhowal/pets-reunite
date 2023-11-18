@@ -6,10 +6,14 @@ import './PetCards.css';
 import { auth } from '../FirebaseConfig';
 
 function PetCard({ pet, onUpdate, onDelete }) {
-  const { _id, petName, description, reportImage, userId,lastSeenAdd} = pet;
+  const { _id, petName, description, reportImage, userId,lastSeenAdd,email} = pet;
   const currentUserID = auth.currentUser ? auth.currentUser.uid : null;
 
   
+
+  const handleContact = () => {
+    window.location.href = `mailto:${email}`;
+  };
 
 
 
@@ -41,8 +45,8 @@ function PetCard({ pet, onUpdate, onDelete }) {
       <Card.Body>
         <Card.Title className="card-title">{petName}</Card.Title>
         <Card.Text className="card-text">{description}</Card.Text>
-        <Card.Text className='card-text'>{lastSeenAdd}</Card.Text>
-        {currentUserID && currentUserID!==userId && (<Button variant='info' className='petcard-btn'>Contact</Button> )}
+        <Card.Text className='card-text'>Last seen at: {lastSeenAdd}</Card.Text>
+        {currentUserID && currentUserID!==userId && (<Button variant='info' className='petcard-btn' onClick={handleContact}>Contact</Button> )}
         <Link to={`/update/${_id}`}>
           {currentUserID && currentUserID === userId && (
             <Button variant="safe" className="petcard-btn" onClick={() => onUpdate(_id)}>
