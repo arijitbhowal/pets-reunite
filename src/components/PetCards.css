@@ -39,8 +39,11 @@
 /* PetCards.css */
 
 /* Style for the pet cards */
+/* PetCards.css */
+
+/* Style for the pet cards */
 .pet-card {
-  background-color: white;
+  background-color: #ffcccb; /* Set the background color to a light coral color */
   flex: 1; /* Make the card occupy available width */
   margin: 10px;
   padding: 10px;
@@ -48,6 +51,7 @@
   width: 100%; /* Ensure full width within flex container */
   z-index: 2;
 }
+
 .card-img-top {
   width: 100%; /* Adjust the width as needed */
   height: 200px; /* Adjust the height as needed */

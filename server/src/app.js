@@ -51,21 +51,29 @@ app.get("/api/pets/maps", async (req, res) => {
 
 app.get("/api/pets", async (req, res) => {
   try {
-    const filter = {
-      petStatus: req.query.petStatus,
-      type: req.query.type,
-      sex: req.query.sex,
-    };
+    const pets = await Pet.find();
+    let filteredPets = pets;
+    const { petStatus, type, sex } = req.query;
 
+    if (petStatus) {
+      filteredPets = filteredPets.filter((pet) => pet.petStatus === petStatus);
+    }
 
+    if (type) {
+      filteredPets = filteredPets.filter((pet) => pet.type === type);
+    }
 
-    const pets = await Pet.find(filter);
-
-    res.json(pets);
+    if (sex) {
+      filteredPets = filteredPets.filter((pet) => pet.sex === sex);
+    }
+    
+    
+    res.json(filteredPets);
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
 
 
 app.get('/api/pets/:id', async (req, res) => {

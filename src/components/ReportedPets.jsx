@@ -14,9 +14,15 @@ const ReportedPets = ({ filterData }) => {
 
   const fetchPets = async () => {
     try {
-      const response = await fetch(
-        `/api/pets?petStatus=${filterData.petStatus}&type=${filterData.type}&sex=${filterData.sex}`
-      );
+
+       let apiUrl = '/api/pets';
+
+    if (filterData.petStatus || filterData.type || filterData.sex) {
+      apiUrl += `?petStatus=${filterData.petStatus}&type=${filterData.type}&sex=${filterData.sex}`;
+    }
+
+    const response = await fetch(apiUrl);
+      
 
       if (!response.ok) {
         throw new Error('Failed to fetch pets');
@@ -36,6 +42,8 @@ const ReportedPets = ({ filterData }) => {
       setPets([]);
     }
   };
+
+  
 
   const handleUpdate = (petId) => {
     const petToUpdate = pets.find((pet) => pet._id === petId);
@@ -63,6 +71,8 @@ const ReportedPets = ({ filterData }) => {
   useEffect(() => {
     fetchPets();
   }, [filterData]);
+
+ 
 
   return (
     <div className="reported-pets">

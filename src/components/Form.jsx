@@ -29,23 +29,13 @@ const LostPetForm = () => {
   const [reportImage, setReportImage] = useState(null);
   const [geoCodeFormVisible, setGeoCodeFormVisible] = useState(false);
 
-  const handleImageChange = (e) => {
-    console.log(e.target.files[0]);
-    setReportImage(e.target.files[0]);
-  };
-
-  const handleImageSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("reportImage", reportImage);
-  };
 
   const handleSubmitReport = async (e) => {
     e.preventDefault();
     try {
       const timestamp = new Date().toISOString();
       const userId = auth.currentUser.uid;
-      const userName = auth.currentUser.displayName;
+      const userName = auth.currentUser.email;
       const formDataWithTimestamp = {
         ...formData,
         timestamp,
@@ -74,17 +64,18 @@ const LostPetForm = () => {
     }
   };
   
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
   
-
     if (name === "latitude" || name === "longitude") {
       setFormData({ ...formData, [name]: parseFloat(value) });
     } else {
       setFormData({ ...formData, [name]: value });
     }
   };
+  
 
   const toggleGeoCodeForm = () => {
     setGeoCodeFormVisible(!geoCodeFormVisible);
@@ -303,11 +294,11 @@ const LostPetForm = () => {
             <label className="report-form__label report-form__label-set">
               Image
               <p className="report-form__note">
-                Please upload the pet image here
+                Please upload the pet image url here
               </p>
               <input
-                type="file"
-                name="image"
+                type="text"
+                name="reportImage"
                 id="reportImage"
                 value={formData.reportImage}
                 onChange={handleChange}

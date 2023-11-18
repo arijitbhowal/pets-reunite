@@ -6,8 +6,12 @@ import './PetCards.css';
 import { auth } from '../FirebaseConfig';
 
 function PetCard({ pet, onUpdate, onDelete }) {
-  const { _id, petName, description, reportImage, userId } = pet;
+  const { _id, petName, description, reportImage, userId,userName,timestamp } = pet;
   const currentUserID = auth.currentUser ? auth.currentUser.uid : null;
+
+  
+
+
 
   const handleDelete = async () => {
     try {
@@ -37,6 +41,8 @@ function PetCard({ pet, onUpdate, onDelete }) {
       <Card.Body>
         <Card.Title className="card-title">{petName}</Card.Title>
         <Card.Text className="card-text">{description}</Card.Text>
+        <p className='card-info'>Uploaded by: {userName}</p>
+        <p className="card-info">Reported on: {timestamp}</p>
         <Link to={`/update/${_id}`}>
           {currentUserID && currentUserID === userId && (
             <Button variant="info" className="petcard-btn" onClick={() => onUpdate(_id)}>
