@@ -8,7 +8,7 @@ const UpdatePet = () => {
   const [formData, setFormData] = useState({
     petName: '',
     description: '',
-    location: '',
+    lastSeenAdd: '',
   });
 
   useEffect(() => {
@@ -20,6 +20,7 @@ const UpdatePet = () => {
           setFormData({
             petName: data.petName,
             description: data.description,
+            lastSeenAdd:data.lastSeenAdd,
           });
         } else {
           console.error('Failed to fetch pet details:', response.statusText);
@@ -76,6 +77,10 @@ const UpdatePet = () => {
         <label>
           Description:
           <textarea name="description" value={formData.description} onChange={handleChange} />
+        </label>
+        <label>
+          Location:
+          <input type="text" name="petLocation" value={formData.lastSeenAdd} onChange={handleChange} />
         </label>
         <button type="submit">Update</button>
       </form>

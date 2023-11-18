@@ -6,7 +6,7 @@ import './PetCards.css';
 import { auth } from '../FirebaseConfig';
 
 function PetCard({ pet, onUpdate, onDelete }) {
-  const { _id, petName, description, reportImage, userId,userName,timestamp } = pet;
+  const { _id, petName, description, reportImage, userId,lastSeenAdd} = pet;
   const currentUserID = auth.currentUser ? auth.currentUser.uid : null;
 
   
@@ -41,11 +41,11 @@ function PetCard({ pet, onUpdate, onDelete }) {
       <Card.Body>
         <Card.Title className="card-title">{petName}</Card.Title>
         <Card.Text className="card-text">{description}</Card.Text>
-        <p className='card-info'>Uploaded by: {userName}</p>
-        <p className="card-info">Reported on: {timestamp}</p>
+        <Card.Text className='card-text'>{lastSeenAdd}</Card.Text>
+        {currentUserID && currentUserID!==userId && (<Button variant='info' className='petcard-btn'>Contact</Button> )}
         <Link to={`/update/${_id}`}>
           {currentUserID && currentUserID === userId && (
-            <Button variant="info" className="petcard-btn" onClick={() => onUpdate(_id)}>
+            <Button variant="safe" className="petcard-btn" onClick={() => onUpdate(_id)}>
               UPDATE
             </Button>
           )}
