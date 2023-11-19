@@ -3,28 +3,84 @@ import React, { useState, useEffect } from "react"; // Import useEffect from Rea
 import OrangeMarker from "../assets/marker-orange.png";
 import BlueMarker from "../assets/marker-blue.png";
 import "./MyMap.css";
+import { auth } from '../FirebaseConfig';
 
 // Custom Popup component
-const CustomPopup = ({ pet }) => (
-  <div style={{ maxWidth: "200px" }}>
-    <h2>{pet.petName}</h2>
-    <p>Type: {pet.type}</p>
-    <p>Sex: {pet.sex}</p>
-    <p>Last Seen Address: {pet.lastSeenAdd}</p>
-    <p>Email: {pet.email}</p>
-    <p>Last Seen Date: {pet.lastSeenDate}</p>
-    <p>Description: {pet.description}</p>
-    {/* Add other details as needed */}
-  </div>
-);
+// Custom Popup component
+const CustomPopup = ({ pet }) => {
+  const currentUserID = auth.currentUser ? auth.currentUser.uid : null;
+
+  const popupStyle = {
+    width: "200px",
+    padding: "8px",
+    fontSize: "12px",
+    wordWrap: "break-word",
+    backgroundColor: pet.petStatus === "Lost" ? "#FFDAB9" : "#ADD8E6",
+    margin: "0",
+    borderRadius: "8px",
+  };
+
+  const handleContact = () => {
+    window.location.href = `mailto:${pet.email}`;
+  };
+
+  return (
+    <div style={popupStyle}>
+      {pet.reportImage && (
+        <div style={{ marginBottom: "8px" }}>
+          <img
+            src={pet.reportImage}
+            alt="Pet"
+            style={{ width: "100%", maxHeight: "100px", objectFit: "cover", borderRadius: "4px" }}
+          />
+        </div>
+      )}
+      <h2 style={{ margin: "0 0 4px", fontWeight: "bold" }}>{pet.petName}</h2>
+      <p style={{ margin: "0 0 2px" }}>
+        <span style={{ fontWeight: "bold" }}>Type:</span> {pet.type}
+      </p>
+      <p style={{ margin: "0 0 2px" }}>
+        <span style={{ fontWeight: "bold" }}>Sex:</span> {pet.sex}
+      </p>
+      <p style={{ margin: "0 0 2px" }}>
+        <span style={{ fontWeight: "bold" }}>Last Seen:</span> {pet.lastSeenAdd}
+      </p>
+      <p style={{ margin: "0 0 2px" }}>
+        <span style={{ fontWeight: "bold" }}>Last Seen On:</span>{" "}
+        {pet.lastSeenDate.split("T")[0]}
+      </p>
+      <p style={{ margin: "0 0 4px" }}>
+        <span style={{ fontWeight: "bold" }}>Description:</span> {pet.description}
+      </p>
+      {/* Add the Contact button */}
+      {pet.email && currentUserID && currentUserID !== pet.userId && (
+        <button
+          style={{
+            display: "block",
+            width: "100%",
+            padding: "8px",
+            backgroundColor: "#073b4c",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+          }}
+          onClick={handleContact}
+        >
+          Contact
+        </button>
+      )}
+    </div>
+  );
+};
+
 
 const MyMap = (props) => {
   const { isLoaded } = props;
   const [selectedPet, setSelectedPet] = useState(null);
   const [filterLost, setFilterLost] = useState(false);
   const [filterFound, setFilterFound] = useState(false);
-  const [pins, setPins] = useState([]); 
-
+  const [pins, setPins] = useState([]);
   const containerStyle = {
     width: "100vw",
     height: "90vh",
