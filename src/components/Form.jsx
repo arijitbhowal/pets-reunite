@@ -29,7 +29,6 @@ const LostPetForm = () => {
   const [reportImage, setReportImage] = useState(null);
   const [geoCodeFormVisible, setGeoCodeFormVisible] = useState(false);
 
-
   const handleSubmitReport = async (e) => {
     e.preventDefault();
     try {
@@ -42,19 +41,19 @@ const LostPetForm = () => {
         userId,
         userName,
       };
-  
+
       const res = await fetch("/api/pets", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formDataWithTimestamp),
       });
-  
+
       const data = await res.json();
-  
+
       if (data.status === 422 || !data) {
         throw new Error("Form not submitted");
       }
-  
+
       window.alert("Form Submitted Successfully");
       console.log("Form Submitted Successfully");
       history("/search");
@@ -63,24 +62,20 @@ const LostPetForm = () => {
       window.alert("Form submission failed");
     }
   };
-  
-  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-  
+
     if (name === "latitude" || name === "longitude") {
       setFormData({ ...formData, [name]: parseFloat(value) });
     } else {
       setFormData({ ...formData, [name]: value });
     }
   };
-  
 
   const toggleGeoCodeForm = () => {
     setGeoCodeFormVisible(!geoCodeFormVisible);
   };
-
 
   const renderError = (errorName) => {
     return (
@@ -92,7 +87,9 @@ const LostPetForm = () => {
 
   return (
     <div className="report-pet">
-      <Navbar />
+      <div className="nav">
+        <Navbar />
+      </div>
       <div className="report-form__container">
         <h2 className="report-form__header">
           <AiOutlineFileAdd size={40} className="report-form__header-icon" />
@@ -236,7 +233,10 @@ const LostPetForm = () => {
               />
             </label>
           </div>
-          <p>(Use the Geocoder below to get the latitude and longitude of the location)</p>
+          <p>
+            (Use the Geocoder below to get the latitude and longitude of the
+            location)
+          </p>
           <div className="report-form__sub-container">
             <label className="report-form__label report-form__label-set">
               Contact Email
@@ -300,6 +300,7 @@ const LostPetForm = () => {
                 type="text"
                 name="reportImage"
                 id="reportImage"
+                placeholder="Enter the Image URL"
                 value={formData.reportImage}
                 onChange={handleChange}
               />
@@ -312,11 +313,11 @@ const LostPetForm = () => {
       </div>
       {geoCodeFormVisible && <GeoCodeForm />}
       <button
-  className="geocode-toggle-button geocode-center-button"
-  onClick={toggleGeoCodeForm}
->
-  {geoCodeFormVisible ? "Hide GeoCoder" : "Show GeoCoder"}
-</button>
+        className="geocode-toggle-button geocode-center-button"
+        onClick={toggleGeoCodeForm}
+      >
+        {geoCodeFormVisible ? "Hide GeoCoder" : "Show GeoCoder"}
+      </button>
     </div>
   );
 };

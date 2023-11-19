@@ -12,3 +12,28 @@
     align-items: center; /* Center the items horizontally on small screens */
   }
 }
+/* SearchPet.css */
+
+.container-fluid {
+  padding: 0; /* Remove default padding to extend to the edge of the viewport */
+  height: 100vh; /* Set the container to full viewport height */
+  display: flex; /* Use flexbox to arrange children */
+}
+
+.row {
+  flex: 1; /* Allow the row to take up remaining space */
+  overflow: hidden; /* Hide any overflowing content */
+}
+
+
+.main-content {
+  overflow-y: auto; /* Allow main content to scroll if needed */
+  padding: 20px; /* Add some padding to the main content */
+  flex: 1; /* Allow main content to take up remaining space */
+}
+
+/* Add other styles as needed */
+body{
+  background-color: #207893;
+}
+

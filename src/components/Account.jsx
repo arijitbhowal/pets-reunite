@@ -22,14 +22,27 @@ const Account = () => {
   }
 
   function handleSubmit() {
-    upload(photo, currentUser, setLoading);
+    upload(photo, currentUser, setLoading)
+      .then(() => {
+        // Reload the page after a successful upload
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error('Error during upload:', error);
+      });
   }
+  
 
   useEffect(() => {
+    // Update the photoURL only if currentUser and currentUser.photoURL exist
     if (currentUser?.photoURL) {
       setPhotoURL(currentUser.photoURL);
+    } else {
+      // If there's no photoURL, set it to the default profileImage
+      setPhotoURL(profileImage);
     }
   }, [currentUser]);
+  
 
   const handleLogout = () => {
     auth.signOut().then(() => {

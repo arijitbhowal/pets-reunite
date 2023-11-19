@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import './UpdatePet.css'; // Import the provided styling
 
 const UpdatePet = () => {
   const { petId } = useParams();
@@ -20,7 +21,7 @@ const UpdatePet = () => {
           setFormData({
             petName: data.petName,
             description: data.description,
-            lastSeenAdd:data.lastSeenAdd,
+            lastSeenAdd: data.lastSeenAdd,
           });
         } else {
           console.error('Failed to fetch pet details:', response.statusText);
@@ -29,10 +30,9 @@ const UpdatePet = () => {
         console.error('Error fetching pet details:', error);
       }
     };
-  
+
     fetchPetDetails();
   }, [petId]);
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,7 +53,6 @@ const UpdatePet = () => {
       } else {
         console.error('Failed to update pet details:', data.error);
         navigate('/search');
-
       }
     } catch (error) {
       console.error('Error updating pet details:', error);
@@ -67,22 +66,44 @@ const UpdatePet = () => {
   };
 
   return (
-    <div className="update-form-container">
-      <h2>Update Pet Details</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
+    <div className="update-pet-container">
+      <h2 className="update-pet-heading">Update Pet Details</h2>
+      <form className="update-pet-form" onSubmit={handleSubmit}>
+        <label className="update-pet-label">
           Pet Name:
-          <input type="text" name="petName" value={formData.petName} onChange={handleChange} />
+          <input
+            className="update-pet-input"
+            type="text"
+            name="petName"
+            placeholder='e.g. "Bella"'
+            value={formData.petName}
+            onChange={handleChange}
+          />
         </label>
-        <label>
+        <label className="update-pet-label">
           Description:
-          <textarea name="description" value={formData.description} onChange={handleChange} />
+          <textarea
+            className="update-pet-textarea"
+            name="description"
+            value={formData.description}
+            placeholder='Descripton of the pet, e.g. "Black and white cat with a red collar"'
+            onChange={handleChange}
+          />
         </label>
-        <label>
+        <label className="update-pet-label">
           Location:
-          <input type="text" name="petLocation" value={formData.lastSeenAdd} onChange={handleChange} />
+          <input
+            className="update-pet-input"
+            type="text"
+            name="petLocation"
+            value={formData.lastSeenAdd}
+            placeholder='e.g. "123 Main St, New York, NY 10001"'
+            onChange={handleChange}
+          />
         </label>
-        <button type="submit">Update</button>
+        <button className="update-pet-button" type="submit">
+          Update
+        </button>
       </form>
     </div>
   );

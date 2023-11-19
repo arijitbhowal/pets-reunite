@@ -1,73 +1,171 @@
-.card-img-top {
-    max-height: 200px; /* Adjust the image height as needed */
-  }
-  
-  /* Style for the card title */
-  .card-title {
-    font-size: 1.5rem;
-  }
-  
-  /* Style for the card text */
-  .card-text {
-    font-size: 1rem;
-  }
-  
-  .petcard-btn {
-    background-color: #007bff; /* Set the background color */
-    border: none; /* Remove border */
-    color: #fff; /* Set text color to white */
-    padding: 8px 16px; /* Adjust padding as needed */
-    border-radius: 5px; /* Add some border radius for rounded corners */
-    transition: background-color 0.3s; /* Add a smooth transition effect */
-  
-    /* Optional: Hover effect */
-    &:hover {
-      background-color: #0056b3; /* Change the background color on hover */
-    }
-  }
-  /* Adjust other styles as needed */
-  
-  .pet-cards-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 99vw;
-  }
 /* PetCards.css */
 
-/* Style for the pet cards */
-/* PetCards.css */
+/* Style for the pet cards container */
+.pet-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 
-/* Style for the pet cards */
-/* PetCards.css */
-
-/* Style for the pet cards */
+/* Style for each pet card */
 .pet-card {
-  background-color: #ffcccb; /* Set the background color to a light coral color */
-  flex: 1; /* Make the card occupy available width */
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  width: 100%; /* Ensure full width within flex container */
-  z-index: 2;
+  background-color: #ffffff;
+  flex: 0 0 calc(100% - 20px); /* Full width */
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #dcdcdc;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
 }
 
+/* Style for found pets */
+.pet-card.found {
+  border-color: #007bff; /* Blue border color for found pets */
+}
+
+/* Style for lost pets */
+.pet-card.lost {
+  border-color: #ff8c00; /* Orange border color for lost pets */
+}
+
+/* Hover effect for all pet cards */
+.pet-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for the card image */
 .card-img-top {
-  width: 100%; /* Adjust the width as needed */
-  height: 200px; /* Adjust the height as needed */
-  object-fit: cover; /* Maintain aspect ratio while filling the container */
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
+/* Style for card title */
+.card-title {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
 
-@media screen and (max-width: 768px) {
-  .pet-cards-container{
-    flex-direction: column;
-    width: 100vw;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
+/* Style for card description */
+.card-text {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+/* PetCards.css */
+
+/* Style for the pet cards container */
+.pet-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 1200px; /* Set a maximum width to avoid overflow */
+  margin: 0 auto; /* Center the container */
+}
+/* PetCards.css */
+
+/* Style for the pet cards container */
+.pet-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Align cards to the left */
+  max-width: 1200px; /* Set a maximum width to avoid overflow */
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+/* Style for each pet card */
+.pet-card {
+  flex: 0 0 calc(33.33% - 20px); /* Adjust the width of each card */
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #dcdcdc;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+/* ... (rest of the styles remain unchanged) */
+@media (max-width: 768px) {
+  /* Adjust the width of each card for smaller screens */
   .pet-card {
-    width: 100%;
+    flex: 0 0 calc(70% - 20px); /* Increase the width to 70% */
   }
-  
+
+  /* Center the pet cards container for smaller screens */
+  .pet-cards-container {
+    justify-content: center;
+  }
+}
+
+/* Style for the UPDATE and DELETE buttons */
+.petcard-btn {
+  margin-right: 10px;
+  height: 40px; /* Set a fixed height for the buttons */
+  display: flex;
+  align-items: center;
+}
+
+.pet-card.lost {
+  border-color: #ff8c00; /* Orange border color for lost pets */
+  background-color: #ffe6cc; /* Light orange background for lost pets */
+}
+
+/* Style for found pets */
+.pet-card.found {
+  border-color: #007bff; /* Blue border color for found pets */
+  background-color: #cce5ff; /* Light blue background for found pets */
+}
+
+.petcard-btn {
+  margin-right: 10px;
+  height: 40px; /* Set a fixed height for the buttons */
+  display: flex;
+  align-items: center;
+}
+
+/* Style for the UPDATE button */
+.petcard-btn.update {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+/* Hover effect for the UPDATE button */
+.petcard-btn.update:hover {
+  background-color: #0056b3;
+}
+
+/* Style for the DELETE button */
+.petcard-btn.delete {
+  background-color: #ff4500;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+/* Hover effect for the DELETE button */
+.petcard-btn.delete:hover {
+  background-color: #cc3700;
+}
+
+/* Media query for larger devices */
+@media (min-width: 992px) {
+  /* Display UPDATE and DELETE buttons side by side */
+  .petcard-btn {
+    margin-right: 10px;
+  }
 }

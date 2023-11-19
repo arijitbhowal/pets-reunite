@@ -24,7 +24,7 @@ function Filter({ onFilterChange }) {
 
   return (
     <div className="search-filter">
-      <div className="search-filter__header">Filter & Sorting Pets</div>
+      <div className="search-filter__header">Filter Pets</div>
       <form className="search-filter__form">
         <div>
           <h3 className="search-filter__label">Status</h3>
