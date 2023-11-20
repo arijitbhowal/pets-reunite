@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './UpdatePet.css'; // Import the provided styling
+import Navbar from './Navbar';
 
 const UpdatePet = () => {
   const { petId } = useParams();
@@ -66,6 +67,10 @@ const UpdatePet = () => {
   };
 
   return (
+    <>
+    <div className="nav">
+    <Navbar/>
+    </div>
     <div className="update-pet-container">
       <h2 className="update-pet-heading">Update Pet Details</h2>
       <form className="update-pet-form" onSubmit={handleSubmit}>
@@ -106,6 +111,7 @@ const UpdatePet = () => {
         </button>
       </form>
     </div>
+    </>
   );
 };
 

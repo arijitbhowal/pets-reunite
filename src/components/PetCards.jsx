@@ -46,19 +46,19 @@ function PetCard({ pet, onUpdate, onDelete }) {
         <Card.Text className='card-text'>Last seen at: {lastSeenAdd}</Card.Text>
         {currentUserID && currentUserID !== userId && (
           <Button variant='info' className='petcard-btn' onClick={handleContact}>
-            <FaEnvelope /> Contact
+            <FaEnvelope /> <span className='card-btn-txt'> Contact</span>
           </Button>
         )}
         <Link to={`/update/${_id}`}>
           {currentUserID && currentUserID === userId && (
             <Button variant="safe" className="petcard-btn" onClick={() => onUpdate(_id)}>
-              <FaEdit /> UPDATE
+              <FaEdit /> <span className='card-btn-txt'>UPDATE</span>
             </Button>
           )}
         </Link>
         {currentUserID && currentUserID === userId && (
           <Button variant="danger" className="petcard-btn" onClick={handleDelete}>
-            <FaTrash /> DELETE
+            <FaTrash /><span className='card-btn-txt'>DELETE</span>
           </Button>
         )}
       </Card.Body>

@@ -169,3 +169,14 @@
     margin-right: 10px;
   }
 }
+.pet-card .petcard-btn {
+  max-width: 100%; /* Set maximum width for the button */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflowing text */
+  text-overflow: ellipsis; /* Display an ellipsis (...) when text overflows */
+}
+@media (max-width: 350px) {
+  .card-btn-txt{
+    display: none;
+  }
+}

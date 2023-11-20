@@ -4,6 +4,7 @@ import Filter from './Filter';
 import ReportedPets from './ReportedPets';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import './SearchPet.css'; // Import your custom CSS for SearchPet
+import Navbar from './Navbar';
 
 const SearchPet = () => {
   const [filterData, setFilterData] = useState({
@@ -19,6 +20,8 @@ const SearchPet = () => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="search-pet-container">
       <div className="row">
         {/* Sidebar (Filter component) */}
@@ -36,6 +39,7 @@ const SearchPet = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

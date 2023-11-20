@@ -1,18 +1,19 @@
 import { signOut } from "firebase/auth";
 import { auth } from "../FirebaseConfig";
 import { useNavigate } from "react-router-dom";
-import React, { useState, useContext  } from "react";
+import React, { useState, useContext } from "react";
 import Hamburger from "./Hamburger";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
-import { AuthContext } from '../context/AuthContext';
-
+import { AuthContext } from "../context/AuthContext";
+import { BsBoxArrowRight } from "react-icons/bs";
 
 const Navbar = () => {
   const history = useNavigate();
   const [showNavbar, setShowNavbar] = useState(false);
   const [showSearchDropdown, setShowSearchDropdown] = useState(false);
-  const [showLostAndFoundDropdown, setShowLostAndFoundDropdown] = useState(false);
+  const [showLostAndFoundDropdown, setShowLostAndFoundDropdown] =
+    useState(false);
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const { dispatch } = useContext(AuthContext);
 
@@ -22,7 +23,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     signOut(auth).then(() => {
-      dispatch({type: "LOGOUT",payload: null });
+      dispatch({ type: "LOGOUT", payload: null });
       history("/");
     });
   };
@@ -38,11 +39,15 @@ const Navbar = () => {
   const toggleUserDropdown = () => {
     setShowUserDropdown(!showUserDropdown);
   };
+  const handleLogoClick = () => {
+    // Navigate to the home page when the logo is clicked
+    history('/home');
+  };
 
   return (
     <nav className="navbar">
       <div className="nav-container">
-        <div className="logo">
+        <div className="logo-nav" onClick={handleLogoClick}>
           <img src="/logo.svg" alt="Logo" />
           Pets Reunite
         </div>
@@ -107,18 +112,24 @@ const Navbar = () => {
               </div>
             </li>
             <li>
-              <div className="dropdown dropdown-nav user-dropdown" 
-              onMouseEnter={toggleUserDropdown}
-              onMouseLeave={toggleUserDropdown}>
-                <img src="/user-icon.svg" className="user-icon" alt="User" />USER
+              <div
+                className="dropdown dropdown-nav user-dropdown"
+                onMouseEnter={toggleUserDropdown}
+                onMouseLeave={toggleUserDropdown}
+              >
+                <img src="/user-icon.svg" className="user-icon" alt="User" />
+                USER
                 {showUserDropdown && (
                   <div className="dropdown-content user-content">
                     <NavLink to="/myaccount" className="dropdown-link">
                       My Account
                     </NavLink>
                     <br />
-                    <button className="logout-button" onClick={handleLogout}>
-                      Log Out
+                    <button
+                      className="logout-button danger-btn"
+                      onClick={handleLogout}
+                    >
+                      <BsBoxArrowRight /> Log Out
                     </button>
                   </div>
                 )}
@@ -140,8 +151,11 @@ const Navbar = () => {
               <NavLink to="/myaccount">MY ACCOUNT</NavLink>
             </li>
             <li className="mobile-buttons">
-              <button className="logout-button" onClick={handleLogout}>
-                LOG OUT
+              <button
+                className="logout-button danger-btn"
+                onClick={handleLogout}
+              >
+                <BsBoxArrowRight /> Log Out
               </button>
             </li>
           </ul>
