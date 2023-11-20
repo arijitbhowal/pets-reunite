@@ -70,13 +70,11 @@ html {
     padding: 10px 20px; /* Adjust padding as needed */
     margin-left: 10px; /* Adjust margin as needed */
     cursor: pointer;
+    &:hover {
+      background-color: #0a546c; 
+    }
   }
   
-  /* Style for the Sign In button (optional) */
-  .signup-signin .signin-button {
-    background-color: transparent; /* Transparent background for Sign In button */
-    color: #073b4c; /* Text color for Sign In button */
-  }
   
   /* Hide Sign Up and Sign In buttons in mobile */
   @media screen and (max-width: 768px) {
