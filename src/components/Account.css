@@ -1,27 +1,11 @@
-.account-page{
-  width: 100vw;
-  max-width: 100%;
-}
+/* Account.css */
 
-.avatar{
-  vertical-align: middle;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border-width: 0.5px;
-  border-color: gray;
-}
 .account-page {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.nav {
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  padding: 50px; /* Reduced padding */
 }
 
 .fields {
@@ -30,16 +14,40 @@
   align-items: center;
 }
 
+.upload-section {
+  margin-bottom: 10px; /* Reduced margin */
+  text-align: center; /* Center text within the upload section */
+}
+
+.upload-section input {
+  margin-bottom: 5px; /* Reduced margin */
+}
+
 .avatar {
-  width: 100px;
-  height: 100px;
   border-radius: 50%;
-  margin-bottom: 20px;
+  width: 80px; /* Reduced width */
+  height: 80px; /* Reduced height */
+  object-fit: cover;
+  margin-bottom: 10px; /* Reduced margin */
 }
 
 .user-details {
-  margin-top: 20px;
   text-align: center;
+}
+
+.profile {
+  background-color: #3498db;
+  color: #fff;
+  padding: 8px 15px; /* Reduced padding */
+  border: none;
+  border-radius: 5px;
+  margin-top: 8px; /* Reduced margin */
+  cursor: pointer;
+}
+
+.profile:disabled {
+  background-color: #7f8c8d;
+  cursor: not-allowed;
 }
 
 .acc-label {
@@ -47,20 +55,38 @@
   margin-right: 5px;
 }
 
-.profile {
-  margin-top: 10px;
-  padding: 5px 10px;
-  background-color: #004e64;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
+/* Media Query for Small Devices (up to 767px width) */
+@media only screen and (max-width: 767px) {
+  .account-page {
+    padding: 20px; /* Adjusted padding for small screens */
+  }
 
-.profile:hover {
-  background-color: #118ab2;
-}
+  .avatar {
+    width: 60px; /* Further reduced width for small screens */
+    height: 60px; /* Further reduced height for small screens */
+    margin-bottom: 5px; /* Adjusted margin for small screens */
+  }
 
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+  .profile {
+    padding: 5px 10px; /* Adjusted padding for small screens */
+    margin-top: 5px; /* Adjusted margin for small screens */
+  }
+
+  .upload-section {
+    justify-content: center; /* Center content within the upload section */
+    text-align: center; /* Center text within the upload section */
+  }
+  .input-upload-file{
+    margin-left: 50px;
+    margin-right: auto;
+  }
+}  
+
+@media only screen and (max-width: 767px) {
+  .user-details p {
+    margin: 5px 0; /* Add margin for better spacing */
+  }
+  .acc-label {
+    display: none; /* Hide labels on small devices */
+  }
 }

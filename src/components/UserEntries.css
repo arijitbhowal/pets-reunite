@@ -1,0 +1,126 @@
+/* UserEntries.css */
+.user-entries-container {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.9); /* White with 90% opacity */
+  width: 90vw;
+}
+
+.user-entries-list {
+  list-style: none;
+  padding: 0;
+}
+
+.user-entry-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
+}
+.more-info {
+  background-color: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+.toggle-column {
+  width: 50%;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  color: #000;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+.toggle-column:hover {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.toggle-column:disabled {
+  background-color: grey;
+}
+.user-entries-toggle{
+    cursor: pointer;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.user-entries {
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+  }
+  
+  .expanded h2 {
+    margin: 0;
+  }
+  
+  .collapsed h2 {
+    margin-left: 20px; /* Adjust the left margin as needed */
+  }
+  .user-entries {
+    display: flex;
+    flex-direction: column;
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .user-entries.expanded {
+    justify-content: center;
+  }
+  
+  .user-entries.collapsed {
+    justify-content: center; /* Center when collapsed */
+  }
+  
+  .user-entries-toggle {
+    cursor: pointer;
+  }
+
+  /* Add this to your CSS file */
+
+.user-entry-item {
+    position: relative;
+  }
+  
+  .update-delete-btns {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Add any additional styling as needed */
+  /* Add this to your CSS file */
+.transparent-btn {
+    background: none;
+    color: #000;
+    margin: 3px;
+    &:hover {
+      background-color: gray; /* White with 80% opacity */
+    }
+  }
+
+  .danger-btn {
+    background-color: red;
+    margin: 3px;
+    &:hover {
+      background-color: darkred;
+    }
+  }
+
+  .more-info-btn{
+    background: none;
+    color: darkgray;
+    padding: 0%;
+    font-size: medium;
+    &:hover {
+        background-color: rgba(255, 255, 255, 0);
+    }
+  }
+  

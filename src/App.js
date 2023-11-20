@@ -12,6 +12,7 @@ import Account from "./components/Account";
 import { AuthContext } from './context/AuthContext';
 import SuccessStories from "./components/SuccessStories";
 import UpdatePet from "./components/UpdatePet";
+import UserAccount from "./components/UserAccount";
 
 function App() {
 
@@ -35,7 +36,7 @@ function App() {
       <Route path='/found' element={<RequireAuth><Form/></RequireAuth>} />
       <Route path='/search' element={<RequireAuth><SearchPet/></RequireAuth>} />
       <Route path='/map' element={<RequireAuth><MapComponent/></RequireAuth>} />
-      <Route path='/myaccount' element={<RequireAuth><Account/></RequireAuth>} />
+      <Route path='/myaccount' element={<RequireAuth><UserAccount/></RequireAuth>} />
       <Route path='/successstories' element={<RequireAuth><SuccessStories isAuth={isAuth}/></RequireAuth>} />
       <Route path='/update/:petId' element={<RequireAuth><UpdatePet /></RequireAuth>} />
     </Routes>
