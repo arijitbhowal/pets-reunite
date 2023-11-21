@@ -119,6 +119,7 @@ app.put("/api/pets/:petId", async (req, res) => {
 
     pet.petName = req.body.petName || pet.petName;
     pet.description = req.body.description || pet.description;
+    pet.lastSeenAdd=req.body.lastSeenAdd||pet.lastSeenAdd;
     const updatedPet = await pet.save();
 
     res.json(updatedPet);
@@ -156,3 +157,4 @@ app.delete("/api/pets/:id", async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+

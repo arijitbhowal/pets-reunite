@@ -50,18 +50,19 @@ const LostPetForm = () => {
 
       const data = await res.json();
 
-      if (data.status === 422 || !data) {
-        throw new Error("Form not submitted");
-      }
-
-      window.alert("Form Submitted Successfully");
-      console.log("Form Submitted Successfully");
-      history("/search");
-    } catch (error) {
-      console.error("Error submitting form:", error);
-      window.alert("Form submission failed");
+    if (!res.ok) {
+      // Check for non-successful response status
+      const errorData = await res.json();
+      throw new Error(`Server error: ${errorData.message}`);
     }
-  };
+
+    console.log("Form submitted successfully");
+    history("/search");
+  } catch (error) {
+    console.error("Error submitting form:", error.message);
+    window.alert("Form submission failed");
+  }
+};
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -22,14 +22,7 @@ const Account = () => {
   }
 
   function handleSubmit() {
-    upload(photo, currentUser, setLoading)
-      .then(() => {
-        // Reload the page after a successful upload
-        window.location.reload();
-      })
-      .catch((error) => {
-        console.error('Error during upload:', error);
-      });
+    upload(photo, currentUser, setLoading);
   }
   
 

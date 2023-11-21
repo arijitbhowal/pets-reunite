@@ -100,7 +100,7 @@ const UpdatePet = () => {
           <input
             className="update-pet-input"
             type="text"
-            name="petLocation"
+            name="lastSeenAdd"
             value={formData.lastSeenAdd}
             placeholder='e.g. "123 Main St, New York, NY 10001"'
             onChange={handleChange}

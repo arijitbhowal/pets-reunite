@@ -1,30 +1,38 @@
+//UserEntries
 import React, { useEffect, useState } from 'react';
 import { BsArrowDown, BsArrowUp } from 'react-icons/bs'; // Import Bootstrap icons
 import './UserEntries.css'; // Import the CSS file
 import { BsChevronUp, BsChevronDown, BsPencilFill, BsTrashFill } from 'react-icons/bs'; // Import Bootstrap icons
+import { useNavigate } from 'react-router-dom';
+
 
 const UserEntries = ({ userId }) => {
+  const navigate = useNavigate();
   const [allUserEntries, setAllUserEntries] = useState([]);
   const [userEntries, setUserEntries] = useState([]);
   const [activeButton, setActiveButton] = useState('lost');
   const [isExpanded, setIsExpanded] = useState(false);
+
 
   useEffect(() => {
     const fetchUserEntries = async () => {
       try {
         const response = await fetch("/api/pets/maps");
         const allEntries = await response.json();
-
+  
         const entries = allEntries.filter((entry) => entry.userId === userId);
         setAllUserEntries(entries);
-        setUserEntries(entries.map((entry) => ({ ...entry, showMoreInfo: false })));
+        const defaultStatus = 'lost';
+        const filteredEntries = entries.filter((entry) => entry.petStatus.toLowerCase() === defaultStatus);
+        setUserEntries(filteredEntries.map((entry) => ({ ...entry, showMoreInfo: false })));
       } catch (error) {
         console.error('Error fetching user entries:', error);
       }
     };
-
+  
     fetchUserEntries();
   }, [userId]);
+  
 
   const toggleMoreInfo = (index) => {
     setUserEntries((prevEntries) =>
@@ -34,14 +42,33 @@ const UserEntries = ({ userId }) => {
     );
   };
 
-  const handleUpdate = (entryId) => {
-    console.log(`Update entry with ID ${entryId}`);
+  const handleUpdate = (entry) => {
+    console.log(`Update entry with ID ${entry._id}`);
+    navigate(`/update/${entry._id}`);
   };
 
-  const handleDelete = (entryId) => {
-    console.log(`Delete entry with ID ${entryId}`);
+  const handleDelete = async (entry) => {
+    try {
+      console.log(`Delete entry with ID ${entry._id}`);
+      await fetch(`/api/pets/${entry._id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: entry.userId,
+        }),
+      });
+  
+      console.log(`Pet with ID ${entry._id} deleted successfully.`);
+  
+      setUserEntries((prevEntries) => prevEntries.filter((e) => e._id !== entry._id));
+    } catch (error) {
+      console.error('Error deleting entry:', error);
+    }
   };
-
+  
+  
   const filterEntries = (status) => {
     setActiveButton(status);
     const filteredEntries = allUserEntries.filter((entry) => entry.petStatus.toLowerCase() === status);
@@ -93,10 +120,10 @@ const UserEntries = ({ userId }) => {
               </div>
             )}
   <div className="update-delete-btns">
-    <button className="transparent-btn" onClick={() => handleUpdate(entry.id)}>
+    <button className="transparent-btn" onClick={() => handleUpdate(entry)}>
       <BsPencilFill />
     </button>
-    <button className="danger-btn" onClick={() => handleDelete(entry.id)}>
+    <button className="danger-btn" onClick={() => handleDelete(entry)}>
       <BsTrashFill />
     </button>
   </div>

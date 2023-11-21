@@ -30,7 +30,7 @@ function ProgressBar() {
   }, []);
 
   return (
-    <div>
+    <div className="how-it-works">
       <h1 className="progress-header">How it Works</h1>
       <br />
       <div className="process-wrapper">
